@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API.SRICA.Aplicacion.DTO\API.SRICA.Aplicacion.DTO.csproj" />
+    <ProjectReference Include="..\API.SRICA.Aplicacion.Interfaz\API.SRICA.Aplicacion.Interfaz.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Entidad\API.SRICA.Dominio.Entidad.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Interfaz\API.SRICA.Dominio.Interfaz.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Servicio.Implementacion\API.SRICA.Dominio.Servicio.Implementacion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Servicio.Interfaz\API.SRICA.Dominio.Servicio.Interfaz.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.ServicioExterno.Interfaz\API.SRICA.Dominio.ServicioExterno.Interfaz.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="IPAddressRange" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

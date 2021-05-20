@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+opencv-python
+opencv-contrib-python
+torch==1.7
+torchvision==0.8
+cython
+pyyaml
+scipy

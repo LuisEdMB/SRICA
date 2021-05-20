@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API.SRICA.Aplicacion.Implementacion\API.SRICA.Aplicacion.Implementacion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Aplicacion.Interfaz\API.SRICA.Aplicacion.Interfaz.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Servicio.Implementacion\API.SRICA.Dominio.Servicio.Implementacion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Servicio.Interfaz\API.SRICA.Dominio.Servicio.Interfaz.csproj" />
+    <ProjectReference Include="..\API.SRICA.Infraestructura.Configuracion\API.SRICA.Infraestructura.Configuracion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Infraestructura.ServicioExterno.Implementacion\API.SRICA.Infraestructura.ServicioExterno.Implementacion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.ServicioExterno.Interfaz\API.SRICA.Dominio.ServicioExterno.Interfaz.csproj" />
+  </ItemGroup>
+
+</Project>

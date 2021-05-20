@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="API.SRICA.Distribucion.VariableConstante.Constante">
+    <Position X="31.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Constante\Constante.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.AccionSistemaController">
+    <Position X="23" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AccionSistemaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.AlertaController">
+    <Position X="19" Y="9.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Controllers\AlertaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.AreaController">
+    <Position X="15.25" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABAACAAAAAAAAAAAAAAAAAAAAAAAQkAACAAAAA=</HashCode>
+      <FileName>Controllers\AreaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.BaseController">
+    <Position X="20.25" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAABAAAAAAAAAAAABAAAIAAAAAgA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.BitacoraAccionEquipoBiometricoController">
+    <Position X="12.75" Y="7" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Controllers\BitacoraAccionEquipoBiometricoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.BitacoraAccionSistemaController">
+    <Position X="26.25" Y="7" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAABAAAAAAgA=</HashCode>
+      <FileName>Controllers\BitacoraAccionSistemaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.EquipoBiometricoController">
+    <Position X="23" Y="9.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAAAAAIBAAAAAAMAAAAAAAAAAAAAAAAAAAAGAAA=</HashCode>
+      <FileName>Controllers\EquipoBiometricoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.IrisController">
+    <Position X="17.75" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Controllers\IrisController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.LoginController">
+    <Position X="27.75" Y="13.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.LoginRefrescoController">
+    <Position X="17.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAACA=</HashCode>
+      <FileName>Controllers\LoginRefrescoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.ModuloSistemaController">
+    <Position X="12.75" Y="9.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAA=</HashCode>
+      <FileName>Controllers\ModuloSistemaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.NomenclaturaEquipoBiometricoController">
+    <Position X="26.25" Y="9.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAgAAAAAAQQCAAIAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Controllers\NomenclaturaEquipoBiometricoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.PersonalEmpresaController">
+    <Position X="20.5" Y="13.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAABAAQAIAAAAAAgAAAAAAAABIAAAAAA=</HashCode>
+      <FileName>Controllers\PersonalEmpresaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.RecursoSistemaController">
+    <Position X="12.75" Y="15" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\RecursoSistemaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.ResultadoAccesoController">
+    <Position X="19.75" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Controllers\ResultadoAccesoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.RolUsuarioController">
+    <Position X="16" Y="9.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Controllers\RolUsuarioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.SedeController">
+    <Position X="12.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAgAAAAAABAAAZAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SedeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.TipoEventoSistemaController">
+    <Position X="24" Y="13.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\TipoEventoSistemaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Controllers.UsuarioController">
+    <Position X="16" Y="15" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAABAACAABAAAAQAABAAAAAAAIAAA=</HashCode>
+      <FileName>Controllers\UsuarioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Hubs.EquipoBiometricoWorker">
+    <Position X="25" Y="3.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAEA=</HashCode>
+      <FileName>Hubs\EquipoBiometricoWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Program">
+    <Position X="31.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Distribucion.Startup">
+    <Position X="29.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAACAAAAAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

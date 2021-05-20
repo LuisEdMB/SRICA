@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+opencv-python
+tensorflow==1.5
+keras==2.1.6

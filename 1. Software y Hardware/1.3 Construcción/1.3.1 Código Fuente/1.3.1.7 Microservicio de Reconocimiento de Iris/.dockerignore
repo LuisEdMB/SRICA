@@ -1,0 +1,6 @@
+__pycache__/
+app/__pycache__/
+app/Endpoint/__pycache__/
+app/Servicio/__pycache__/
+app/Modelo/__pycache__/
+app/Servicio/Complemento/__pycache__/
