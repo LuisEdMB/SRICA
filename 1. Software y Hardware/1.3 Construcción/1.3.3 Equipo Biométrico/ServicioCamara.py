@@ -8,7 +8,7 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
-subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=40 -c exposure_auto=1", shell = True)
+subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=40 -c exposure_auto=1", shell = False)
 
 controlarComponentes = ControlarComponentes()
 
@@ -20,6 +20,7 @@ SENSOR_DISTANCIA_TRIGGER = 23
 SENSOR_DISTANCIA_ECHO = 24
 
 DISTANCIA_MINIMA_CM = 9
+DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
 URL_API_SRICA = "https://192.168.0.26:5001/"
@@ -71,7 +72,7 @@ def ProcesarMicroservicioDeDeteccionDeOjos(imagen):
         controlarComponentes.ControlarSegunModo(1)
         # controlarComponentes.ControlarSegunModo(8, "Fallo en capturar imágenes.", False)
         time.sleep(2)
-        controlarComponentes.ControlarSegunModo(5)
+        controlarComponentes.ControlarSegunModo(9)
 
 def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
     """
@@ -100,7 +101,7 @@ def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
         controlarComponentes.ControlarSegunModo(1)
         # controlarComponentes.ControlarSegunModo(8, "Fallo en reconocimiento.", False)
         time.sleep(2)
-        controlarComponentes.ControlarSegunModo(5)
+        controlarComponentes.ControlarSegunModo(9)
 
 def ConvertirNumpyArrayABase64(imagen):
 	"""
@@ -161,7 +162,7 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
         controlarComponentes.ControlarSegunModo(1)
         # controlarComponentes.ControlarSegunModo(8, "Acceso denegado.", False)
     time.sleep(2)
-    controlarComponentes.ControlarSegunModo(5)
+    controlarComponentes.ControlarSegunModo(9)
 
 def EjecutarProceso():
     global PROCESO_EN_ESPERA
@@ -172,11 +173,12 @@ def EjecutarProceso():
     global DISTANCIA_MINIMA_CM
     global PROCESO_CAPTURANDO
     global IMAGEN_OJO_NIR
+    global DISTANCIA_MINIMA_CM_ENCENDER_LUZ
     try:
         while True:
             _ = camaraNIR.read()
             if PROCESO_EN_ESPERA is True:
-                controlarComponentes.ControlarSegunModo(5)
+                controlarComponentes.ControlarSegunModo(9)
                 PROCESO_EN_ESPERA = False
 
             time.sleep(0.09)
@@ -210,7 +212,11 @@ def EjecutarProceso():
                 # controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
                 ProcesarDeteccionDeOjos()
             else:
-                if PROCESO_CAPTURANDO is False:
+                if distancia <= DISTANCIA_MINIMA_CM_ENCENDER_LUZ:
+                    controlarComponentes.ControlarSegunModo(5)
+                    PROCESO_CAPTURANDO = True
+                    PROCESO_EN_ESPERA = False
+                else:
                     PROCESO_CAPTURANDO = True
                     PROCESO_EN_ESPERA = True
     finally:
