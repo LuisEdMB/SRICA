@@ -10,6 +10,8 @@ import * as AlertaSwal from '../ComponenteGeneral/Mensaje'
 
 import * as ServicioSeguridad from '../../Servicio/Seguridad'
 
+import * as Utilitario from '../../Utilitario'
+
 import { makeStyles, Grid, Card, CardContent, Typography, FormControl, InputAdornment, IconButton, TextField, Button } from '@material-ui/core'
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined'
@@ -162,6 +164,7 @@ export const InicioSesion = () => {
                                         type='text'
                                         value={ usuario }
                                         onChange={ (e) => SetUsuario(e.target.value) }
+                                        onKeyPress={ e => Utilitario.ManejarTeclaEnter(e, handleSubmit(IniciarSesion)) }
                                         inputRef={ register }/>
                                 </FormControl>
                             </Grid>
@@ -203,6 +206,7 @@ export const InicioSesion = () => {
                                         type={ contrasenaVisible ? 'text' : 'password' }
                                         value={ contrasena }
                                         onChange={ (e) => SetContrasena(e.target.value) }
+                                        onKeyPress={ e => Utilitario.ManejarTeclaEnter(e, handleSubmit(IniciarSesion)) }
                                         inputRef={ register }
                                         InputProps={{
                                             endAdornment: (

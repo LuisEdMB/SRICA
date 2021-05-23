@@ -8,7 +8,7 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
-subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=40 -c exposure_auto=1", shell = False)
+subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=40 -c exposure_auto=1", shell = True)
 
 controlarComponentes = ControlarComponentes()
 
@@ -19,11 +19,11 @@ camaraNIR.set(4, 1080)
 SENSOR_DISTANCIA_TRIGGER = 23
 SENSOR_DISTANCIA_ECHO = 24
 
-DISTANCIA_MINIMA_CM = 9
+DISTANCIA_MINIMA_CM = 8
 DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
-URL_API_SRICA = "https://192.168.0.26:5001/"
+URL_API_SRICA = "https://192.168.0.26:8001/"
 URL_MICROSERVICIO_DETECCION_IRIS = "https://192.168.0.26:8003/"
 
 GPIO.setmode(GPIO.BCM)
@@ -149,8 +149,8 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
     IMAGEN_OJO_NIR = None
     resultado = json.loads(respuestaReconocimiento.text)
     if resultado["CodigoExcepcion"] == "":
-        nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
-        apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
+        # nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
+        # apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
         controlarComponentes.ControlarSegunModo(6)
         controlarComponentes.ControlarSegunModo(0)
         # controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
@@ -223,6 +223,6 @@ def EjecutarProceso():
         controlarComponentes.ControlarSegunModo(9)
         camaraNIR.release()
         GPIO.cleanup()
-        EjecutarProceso()
+        print('exit')
 
 EjecutarProceso()

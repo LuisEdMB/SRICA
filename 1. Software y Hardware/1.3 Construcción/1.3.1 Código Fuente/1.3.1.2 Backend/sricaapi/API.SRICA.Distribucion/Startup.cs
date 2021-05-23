@@ -43,12 +43,6 @@ namespace API.SRICA.Distribucion
                             ClockSkew = TimeSpan.Zero
                         };
                     });
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-                c.AddPolicy("AllowHeader", options => options.AllowAnyHeader());
-                c.AddPolicy("AllowMethod", options => options.AllowAnyMethod());
-            });
             services.AddControllers().AddNewtonsoftJson(g =>
             {
                 g.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -74,7 +68,7 @@ namespace API.SRICA.Distribucion
             
             app.UseCors(options =>
             {
-                options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                options.SetIsOriginAllowed(origin => true).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
             });
 
             app.UseAuthentication();

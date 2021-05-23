@@ -12,7 +12,7 @@ LED_RGB_PIN = 18
 LED_RGB_COUNT = 24
 LED_RGB_FREQ_HZ = 800000
 LED_RGB_DMA = 10
-LED_RGB_BRILLO = 10
+LED_RGB_BRILLO = 150
 LED_RGB_INVERT = False
 LED_RGB_CANAL = 0
 
@@ -39,8 +39,7 @@ class ControlarComponentes():
         """
             Método que inicializa la clase.
         """
-        self.ledRgb = Adafruit_NeoPixel(LED_RGB_COUNT, LED_RGB_PIN, LED_RGB_FREQ_HZ, LED_RGB_DMA, 
-            LED_RGB_INVERT, LED_RGB_BRILLO, LED_RGB_CANAL)
+        self.ledRgb = None
         super().__init__()
 
     def ControlarSegunModo(self, modo, texto = '', esperar = True):
@@ -57,17 +56,17 @@ class ControlarComponentes():
         elif modo == ModoControl.CerrarElectroiman:
             self.__ControlarElectroiman(GPIO.HIGH)
         elif modo == ModoControl.LedColorRojo:
-            self.__ControlarLed(255, 0, 0)
+            self.__ControlarLed(255, 0, 0, 10)
         elif modo == ModoControl.LedColorNaranja:
-            self.__ControlarLed(255,165,0)
+            self.__ControlarLed(255, 165, 0, 5)
         elif modo == ModoControl.LedColorAzul:
             self.__ControlarLed(0, 0, 255)
         elif modo == ModoControl.LedColorBlanco:
-            self.__ControlarLed(255, 255, 255)
+            self.__ControlarLed(255, 255, 255, array = [0, 1, 23])
         elif modo == ModoControl.LedColorVerde:
-            self.__ControlarLed(0, 255, 0)
+            self.__ControlarLed(0, 255, 0, 10)
         elif modo == ModoControl.LedColorAmarillo:
-            self.__ControlarLed(255,255,0)
+            self.__ControlarLed(255, 255, 0, array = [0, 1, 23])
         elif modo == ModoControl.ReproducirAudio:
             self.__ReproducirAudio(texto, esperar)
         elif modo == ModoControl.NoLuz:
@@ -84,7 +83,7 @@ class ControlarComponentes():
         GPIO.setup(ELECTROIMAN, GPIO.OUT)
         GPIO.output(ELECTROIMAN, voltaje)
     
-    def __ControlarLed(self, rojo, verde, azul):
+    def __ControlarLed(self, rojo, verde, azul, brillo = LED_RGB_BRILLO, array = range(0, LED_RGB_COUNT)):
         """
             Método que controla el led RGB.
 
@@ -92,9 +91,13 @@ class ControlarComponentes():
                 rojo (float): Color frecuencia rojo.
                 verde (float): Color frecuencia verde.
                 azul (float): Color frecuencia azul.
+                array (array): Lista que contiene la numeración de LED's.
         """
+        self.ledRgb = None
+        self.ledRgb = Adafruit_NeoPixel(LED_RGB_COUNT, LED_RGB_PIN, LED_RGB_FREQ_HZ, LED_RGB_DMA, 
+            LED_RGB_INVERT, brillo, LED_RGB_CANAL)
         self.ledRgb.begin()
-        for x in range(0, LED_RGB_COUNT):
+        for x in array:
             self.ledRgb.setPixelColor(x, Color(rojo, verde, azul))
         self.ledRgb.show()
     

@@ -6,6 +6,11 @@ Date.prototype.addDays = function(days) {
     return date;
 }
 
+export function ManejarTeclaEnter(e, callback) {
+  const code = e.which || e.keyCode
+  if (code === 13) callback()
+}
+
 export const QuitarMilisegundosAlTiempo = (time) => {
     return Math.floor(time/1000)
 }
