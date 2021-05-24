@@ -4,17 +4,14 @@ import pyttsx3
 import subprocess
 import os
 from enum import IntEnum
-from rpi_ws281x import *
+import neopixel
+import board
 
 ELECTROIMAN = 17
 
-LED_RGB_PIN = 18
+LED_RGB_PIN = board.D18
 LED_RGB_COUNT = 24
-LED_RGB_FREQ_HZ = 800000
-LED_RGB_DMA = 10
-LED_RGB_BRILLO = 150
-LED_RGB_INVERT = False
-LED_RGB_CANAL = 0
+LED_RGB_BRILLO = 1
 
 class ModoControl(IntEnum):
     """
@@ -39,7 +36,6 @@ class ControlarComponentes():
         """
             Método que inicializa la clase.
         """
-        self.ledRgb = None
         super().__init__()
 
     def ControlarSegunModo(self, modo, texto = '', esperar = True):
@@ -56,15 +52,15 @@ class ControlarComponentes():
         elif modo == ModoControl.CerrarElectroiman:
             self.__ControlarElectroiman(GPIO.HIGH)
         elif modo == ModoControl.LedColorRojo:
-            self.__ControlarLed(255, 0, 0, 10)
+            self.__ControlarLed(255, 0, 0)
         elif modo == ModoControl.LedColorNaranja:
-            self.__ControlarLed(255, 165, 0, 5)
+            self.__ControlarLed(255, 165, 0, brillo = 0.01)
         elif modo == ModoControl.LedColorAzul:
             self.__ControlarLed(0, 0, 255)
         elif modo == ModoControl.LedColorBlanco:
             self.__ControlarLed(255, 255, 255, array = [0, 1, 23])
         elif modo == ModoControl.LedColorVerde:
-            self.__ControlarLed(0, 255, 0, 10)
+            self.__ControlarLed(0, 255, 0)
         elif modo == ModoControl.LedColorAmarillo:
             self.__ControlarLed(255, 255, 0, array = [0, 1, 23])
         elif modo == ModoControl.ReproducirAudio:
@@ -93,13 +89,10 @@ class ControlarComponentes():
                 azul (float): Color frecuencia azul.
                 array (array): Lista que contiene la numeración de LED's.
         """
-        self.ledRgb = None
-        self.ledRgb = Adafruit_NeoPixel(LED_RGB_COUNT, LED_RGB_PIN, LED_RGB_FREQ_HZ, LED_RGB_DMA, 
-            LED_RGB_INVERT, brillo, LED_RGB_CANAL)
-        self.ledRgb.begin()
+        ledRgb = neopixel.NeoPixel(LED_RGB_PIN, LED_RGB_COUNT, brightness = brillo, auto_write = False)
         for x in array:
-            self.ledRgb.setPixelColor(x, Color(rojo, verde, azul))
-        self.ledRgb.show()
+            ledRgb[x] = (rojo, verde, azul)
+        ledRgb.show()
     
     def __ReproducirAudio(self, texto, esperar):
         """

@@ -204,7 +204,7 @@ def EjecutarProceso():
                     # controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", True)
                     controlarComponentes.ControlarSegunModo(7)
                     PROCESO_CAPTURANDO = False
-                tiempoUnSegundo = time.time() + 1
+                tiempoUnSegundo = time.time() + 1.25
                 while time.time() < tiempoUnSegundo:
                     success, imagen = camaraNIR.read()
                     if success is True:
