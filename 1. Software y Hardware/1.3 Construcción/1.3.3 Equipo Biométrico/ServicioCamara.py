@@ -224,5 +224,6 @@ def EjecutarProceso():
         camaraNIR.release()
         GPIO.cleanup()
         print('exit')
+        EjecutarProceso()
 
 EjecutarProceso()
