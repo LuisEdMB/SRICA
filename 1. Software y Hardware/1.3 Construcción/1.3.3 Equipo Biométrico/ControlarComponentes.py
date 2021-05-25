@@ -11,7 +11,7 @@ ELECTROIMAN = 17
 
 LED_RGB_PIN = board.D18
 LED_RGB_COUNT = 24
-LED_RGB_BRILLO = 1
+LED_RGB_BRILLO = 0.5
 
 class ModoControl(IntEnum):
     """
@@ -58,11 +58,11 @@ class ControlarComponentes():
         elif modo == ModoControl.LedColorAzul:
             self.__ControlarLed(0, 0, 255)
         elif modo == ModoControl.LedColorBlanco:
-            self.__ControlarLed(255, 255, 255, array = [0, 1, 23])
+            self.__ControlarLed(255, 255, 255, brillo = 1, array = [0, 1, 23])
         elif modo == ModoControl.LedColorVerde:
             self.__ControlarLed(0, 255, 0)
         elif modo == ModoControl.LedColorAmarillo:
-            self.__ControlarLed(255, 255, 0, array = [0, 1, 23])
+            self.__ControlarLed(255, 255, 0, brillo = 1, array = [0, 1, 23])
         elif modo == ModoControl.ReproducirAudio:
             self.__ReproducirAudio(texto, esperar)
         elif modo == ModoControl.NoLuz:
