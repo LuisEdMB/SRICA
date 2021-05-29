@@ -70,7 +70,7 @@ def ProcesarMicroservicioDeDeteccionDeOjos(imagen):
     except:
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
-        # controlarComponentes.ControlarSegunModo(8, "Fallo en capturar imágenes.", False)
+        controlarComponentes.ControlarSegunModo(8, "Fallo en capturar imágenes.", False)
         time.sleep(2)
         controlarComponentes.ControlarSegunModo(9)
 
@@ -99,7 +99,7 @@ def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
         IMAGEN_OJO_NIR = None
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
-        # controlarComponentes.ControlarSegunModo(8, "Fallo en reconocimiento.", False)
+        controlarComponentes.ControlarSegunModo(8, "Fallo en reconocimiento.", False)
         time.sleep(2)
         controlarComponentes.ControlarSegunModo(9)
 
@@ -149,18 +149,18 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
     IMAGEN_OJO_NIR = None
     resultado = json.loads(respuestaReconocimiento.text)
     if resultado["CodigoExcepcion"] == "":
-        # nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
-        # apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
+        nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
+        apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
         controlarComponentes.ControlarSegunModo(6)
         controlarComponentes.ControlarSegunModo(0)
-        # controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
-            # apellidoPersonal, False)
+        controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
+            apellidoPersonal, False)
         time.sleep(3)
         controlarComponentes.ControlarSegunModo(1)
     else:
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
-        # controlarComponentes.ControlarSegunModo(8, "Acceso denegado.", False)
+        controlarComponentes.ControlarSegunModo(8, "Acceso denegado.", False)
     time.sleep(2)
     controlarComponentes.ControlarSegunModo(9)
 
@@ -201,7 +201,6 @@ def EjecutarProceso():
                     IMAGEN_ORIGINAL = imagen
             if distancia <= DISTANCIA_MINIMA_CM:
                 if PROCESO_CAPTURANDO is True:
-                    # controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", True)
                     controlarComponentes.ControlarSegunModo(7)
                     PROCESO_CAPTURANDO = False
                 tiempoUnSegundo = time.time() + 1.25
@@ -209,7 +208,7 @@ def EjecutarProceso():
                     success, imagen = camaraNIR.read()
                     if success is True:
                         IMAGEN_OJO_NIR = imagen
-                # controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
+                controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
                 ProcesarDeteccionDeOjos()
             else:
                 if distancia <= DISTANCIA_MINIMA_CM_ENCENDER_LUZ:

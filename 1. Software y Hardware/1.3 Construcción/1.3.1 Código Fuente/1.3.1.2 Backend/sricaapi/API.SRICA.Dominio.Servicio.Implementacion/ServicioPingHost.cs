@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -26,9 +25,9 @@ namespace API.SRICA.Dominio.Servicio.Implementacion
         /// dirección MAC</returns>
         public async Task<Dictionary<string, string>> PingHost(string host, bool esNombreEquipo = false)
         {
-            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            string data = "PCK|SCAN|5025066840471";
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            PingOptions options = new PingOptions(5000, false);
+            PingOptions options = new PingOptions(64, true);
             var equipo = new Dictionary<string, string>
             {
                 {"host", string.Empty},
@@ -37,8 +36,7 @@ namespace API.SRICA.Dominio.Servicio.Implementacion
             };
             try
             {
-                var pingresult = await Task.Run(() =>
-                    new Ping().SendPingAsync(host, 3 * 1000, buffer, options));
+                var pingresult = await new Ping().SendPingAsync(host, 3 * 1000, buffer, options);
                 if (pingresult.Status == IPStatus.Success)
                 {
                     if (!esNombreEquipo)
@@ -62,7 +60,7 @@ namespace API.SRICA.Dominio.Servicio.Implementacion
                                 {"macAddress", macAddress}
                             };
                         }
-                        catch(Exception ex)
+                        catch
                         {
                             // ignored
                         }

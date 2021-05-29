@@ -241,7 +241,7 @@ namespace API.SRICA.Aplicacion.Implementacion
             {
                 if (!string.IsNullOrEmpty(equipoBiometrico.DireccionRedEquipoBiometrico))
                 {
-                    var nomenclatura = nomenclaturas.FirstOrDefault(g => equipoBiometrico.NombreEquipoBiometrico
+                    var nomenclatura = nomenclaturas.FirstOrDefault(g => equipoBiometrico.NombreEquipoBiometrico.ToUpper()
                         .StartsWith((g.DescripcionNomenclatura + "-")));
                     if (nomenclatura != null)
                     {
