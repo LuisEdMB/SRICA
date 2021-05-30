@@ -222,7 +222,6 @@ def EjecutarProceso():
         controlarComponentes.ControlarSegunModo(9)
         camaraNIR.release()
         GPIO.cleanup()
-        print('exit')
         EjecutarProceso()
 
 EjecutarProceso()

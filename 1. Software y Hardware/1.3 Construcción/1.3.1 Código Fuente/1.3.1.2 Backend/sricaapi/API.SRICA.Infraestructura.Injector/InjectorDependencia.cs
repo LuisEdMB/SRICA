@@ -41,72 +41,72 @@ namespace API.SRICA.Infraestructura.Injector
             _servicios.AddDbContext<ContextoOperacion>(g => g.UseMySQL(conexionBaseDatos)
                 .UseLazyLoadingProxies(), ServiceLifetime.Singleton);
 
-            _servicios.AddTransient<ContextoConsulta>();
-            _servicios.AddTransient<ContextoOperacion>();
-            _servicios.AddTransient<IRepositorioConsulta, RepositorioConsulta>();
-            _servicios.AddTransient<IRepositorioOperacion, RepositorioOperacion>();
+            _servicios.AddScoped<ContextoConsulta>();
+            _servicios.AddScoped<ContextoOperacion>();
+            _servicios.AddScoped<IRepositorioConsulta, RepositorioConsulta>();
+            _servicios.AddScoped<IRepositorioOperacion, RepositorioOperacion>();
 
-            _servicios.AddTransient<IServicioEncriptador, ServicioEncriptador>();
-            _servicios.AddTransient<IServicioDesencriptador, ServicioDesencriptador>();
-            _servicios.AddTransient<IServicioAutenticacion, ServicioAutenticacion>();
-            _servicios.AddTransient<IServicioRolUsuario, ServicioRolUsuario>();
-            _servicios.AddTransient<IServicioUsuario, ServicioUsuario>();
-            _servicios.AddTransient<IServicioSede, ServicioSede>();
-            _servicios.AddTransient<IServicioArea, ServicioArea>();
-            _servicios.AddTransient<IServicioNomenclaturaEquipoBiometrico, 
+            _servicios.AddScoped<IServicioEncriptador, ServicioEncriptador>();
+            _servicios.AddScoped<IServicioDesencriptador, ServicioDesencriptador>();
+            _servicios.AddScoped<IServicioAutenticacion, ServicioAutenticacion>();
+            _servicios.AddScoped<IServicioRolUsuario, ServicioRolUsuario>();
+            _servicios.AddScoped<IServicioUsuario, ServicioUsuario>();
+            _servicios.AddScoped<IServicioSede, ServicioSede>();
+            _servicios.AddScoped<IServicioArea, ServicioArea>();
+            _servicios.AddScoped<IServicioNomenclaturaEquipoBiometrico, 
                 ServicioNomenclaturaEquipoBiometrico>();
-            _servicios.AddTransient<IServicioEquipoBiometrico, ServicioEquipoBiometrico>();
-            _servicios.AddTransient<IServicioPersonalEmpresa, ServicioPersonalEmpresa>();
-            _servicios.AddTransient<IServicioBitacoraAccionSistema, ServicioBitacoraAccionSistema>();
-            _servicios.AddTransient<IServicioBitacoraAccionEquipoBiometrico, 
+            _servicios.AddScoped<IServicioEquipoBiometrico, ServicioEquipoBiometrico>();
+            _servicios.AddScoped<IServicioPersonalEmpresa, ServicioPersonalEmpresa>();
+            _servicios.AddScoped<IServicioBitacoraAccionSistema, ServicioBitacoraAccionSistema>();
+            _servicios.AddScoped<IServicioBitacoraAccionEquipoBiometrico, 
                 ServicioBitacoraAccionEquipoBiometrico>();
-            _servicios.AddTransient<IServicioModuloSistema, ServicioModuloSistema>();
-            _servicios.AddTransient<IServicioRecursoSistema, ServicioRecursoSistema>();
-            _servicios.AddTransient<IServicioTipoEventoSistema, ServicioTipoEventoSistema>();
-            _servicios.AddTransient<IServicioAccionSistema, ServicioAccionSistema>();
-            _servicios.AddTransient<IServicioResultadoAcceso, ServicioResultadoAcceso>();
-            _servicios.AddTransient<IServicioIris, ServicioIris>();
-            _servicios.AddTransient<IServicioAlerta, ServicioAlerta>();
-            _servicios.AddTransient<IServicioDireccionRed, ServicioDireccionRed>();
-            _servicios.AddTransient<IServicioArchivo, ServicioArchivo>();
+            _servicios.AddScoped<IServicioModuloSistema, ServicioModuloSistema>();
+            _servicios.AddScoped<IServicioRecursoSistema, ServicioRecursoSistema>();
+            _servicios.AddScoped<IServicioTipoEventoSistema, ServicioTipoEventoSistema>();
+            _servicios.AddScoped<IServicioAccionSistema, ServicioAccionSistema>();
+            _servicios.AddScoped<IServicioResultadoAcceso, ServicioResultadoAcceso>();
+            _servicios.AddScoped<IServicioIris, ServicioIris>();
+            _servicios.AddScoped<IServicioAlerta, ServicioAlerta>();
+            _servicios.AddScoped<IServicioDireccionRed, ServicioDireccionRed>();
+            _servicios.AddScoped<IServicioArchivo, ServicioArchivo>();
 
-            _servicios.AddTransient<IServicioMapeoUsuarioAutenticadoADto, 
+            _servicios.AddScoped<IServicioMapeoUsuarioAutenticadoADto, 
                 ServicioMapeoUsuarioAutenticadoADto>();
-            _servicios.AddTransient<IServicioMapeoRolUsuarioADto, ServicioMapeoRolUsuarioADto>();
-            _servicios.AddTransient<IServicioMapeoUsuarioADto, ServicioMapeoUsuarioADto>();
-            _servicios.AddTransient<IServicioMapeoSedeADto, ServicioMapeoSedeADto>();
-            _servicios.AddTransient<IServicioMapeoAreaADto, ServicioMapeoAreaADto>();
-            _servicios.AddTransient<IServicioMapeoNomenclaturaEquipoBiometricoADto, 
+            _servicios.AddScoped<IServicioMapeoRolUsuarioADto, ServicioMapeoRolUsuarioADto>();
+            _servicios.AddScoped<IServicioMapeoUsuarioADto, ServicioMapeoUsuarioADto>();
+            _servicios.AddScoped<IServicioMapeoSedeADto, ServicioMapeoSedeADto>();
+            _servicios.AddScoped<IServicioMapeoAreaADto, ServicioMapeoAreaADto>();
+            _servicios.AddScoped<IServicioMapeoNomenclaturaEquipoBiometricoADto, 
                 ServicioMapeoNomenclaturaEquipoBiometricoADto>();
-            _servicios.AddTransient<IServicioMapeoEquipoBiometicoADto, ServicioMapeoEquipoBiometicoADto>();
-            _servicios.AddTransient<IServicioMapeoPersonalEmpresaADto, ServicioMapeoPersonalEmpresaADto>();
-            _servicios.AddTransient<IServicioMapeoPersonalEmpresaXAreaADto, 
+            _servicios.AddScoped<IServicioMapeoEquipoBiometicoADto, ServicioMapeoEquipoBiometicoADto>();
+            _servicios.AddScoped<IServicioMapeoPersonalEmpresaADto, ServicioMapeoPersonalEmpresaADto>();
+            _servicios.AddScoped<IServicioMapeoPersonalEmpresaXAreaADto, 
                 ServicioMapeoPersonalEmpresaXAreaADto>();
-            _servicios.AddTransient<IServicioMapeoSistemaADto, ServicioMapeoSistemaADto>();
-            _servicios.AddTransient<IServicioMapeoBitacoraAccionSistemaADto, 
+            _servicios.AddScoped<IServicioMapeoSistemaADto, ServicioMapeoSistemaADto>();
+            _servicios.AddScoped<IServicioMapeoBitacoraAccionSistemaADto, 
                 ServicioMapeoBitacoraAccionSistemaADto>();
-            _servicios.AddTransient<IServicioMapeoBitacoraAccionEquipoBiometricoADto,
+            _servicios.AddScoped<IServicioMapeoBitacoraAccionEquipoBiometricoADto,
                 ServicioMapeoBitacoraAccionEquipoBiometricoADto>();
 
-            _servicios.AddTransient<IServicioCryptoAES, ServicioCryptoAES>();
-            _servicios.AddTransient<IServicioToken, ServicioToken>();
-            _servicios.AddTransient<IServicioPingHost, ServicioPingHost>();
-            _servicios.AddTransient<IServicioDominioUsuario, ServicioDominioUsuario>();
-            _servicios.AddTransient<IServicioDominioSede, ServicioDominioSede>();
-            _servicios.AddTransient<IServicioDominioArea, ServicioDominioArea>();
-            _servicios.AddTransient<IServicioDominioNomenclaturaEquipoBiometrico, 
+            _servicios.AddScoped<IServicioCryptoAES, ServicioCryptoAES>();
+            _servicios.AddScoped<IServicioToken, ServicioToken>();
+            _servicios.AddScoped<IServicioPingHost, ServicioPingHost>();
+            _servicios.AddScoped<IServicioDominioUsuario, ServicioDominioUsuario>();
+            _servicios.AddScoped<IServicioDominioSede, ServicioDominioSede>();
+            _servicios.AddScoped<IServicioDominioArea, ServicioDominioArea>();
+            _servicios.AddScoped<IServicioDominioNomenclaturaEquipoBiometrico, 
                 ServicioDominioNomenclaturaEquipoBiometrico>();
-            _servicios.AddTransient<IServicioDominioEquipoBiometrico, ServicioDominioEquipoBiometrico>();
-            _servicios.AddTransient<IServicioDominioPersonalEmpresa, ServicioDominioPersonalEmpresa>();
-            _servicios.AddTransient<IServicioDominioBitacoraAccionSistema, 
+            _servicios.AddScoped<IServicioDominioEquipoBiometrico, ServicioDominioEquipoBiometrico>();
+            _servicios.AddScoped<IServicioDominioPersonalEmpresa, ServicioDominioPersonalEmpresa>();
+            _servicios.AddScoped<IServicioDominioBitacoraAccionSistema, 
                 ServicioDominioBitacoraAccionSistema>();
-            _servicios.AddTransient<IServicioDominioBitacoraAccionEquipoBiometrico,
+            _servicios.AddScoped<IServicioDominioBitacoraAccionEquipoBiometrico,
                 ServicioDominioBitacoraAccionEquipoBiometrico>();
 
-            _servicios.AddTransient<IMicroservicioCorreo, MicroservicioCorreo>();
-            _servicios.AddTransient<IMicroservicioSegmentacionIris, MicroservicioSegmentacionIris>();
-            _servicios.AddTransient<IMicroservicioCodificacionIris, MicroservicioCodificacionIris>();
-            _servicios.AddTransient<IMicroservicioReconocimientoIris, MicroservicioReconocimientoIris>();
+            _servicios.AddScoped<IMicroservicioCorreo, MicroservicioCorreo>();
+            _servicios.AddScoped<IMicroservicioSegmentacionIris, MicroservicioSegmentacionIris>();
+            _servicios.AddScoped<IMicroservicioCodificacionIris, MicroservicioCodificacionIris>();
+            _servicios.AddScoped<IMicroservicioReconocimientoIris, MicroservicioReconocimientoIris>();
         }
     }
 }
