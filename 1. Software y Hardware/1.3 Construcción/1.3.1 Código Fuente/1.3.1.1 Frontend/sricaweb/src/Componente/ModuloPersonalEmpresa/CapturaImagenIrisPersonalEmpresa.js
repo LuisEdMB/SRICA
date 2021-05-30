@@ -48,6 +48,7 @@ const estilos = makeStyles({
 })
 
 export const CapturaImagenIrisPersonalEmpresa = () => {
+    const [retry, setRetry] = useState(false)
     const claseEstilo = estilos()
     const personalEmpresaFormulario = useSelector((store) => store.PersonalEmpresaFormulario)
     const dispatch = useDispatch()
@@ -60,14 +61,16 @@ export const CapturaImagenIrisPersonalEmpresa = () => {
             CapturarImagenes()
         }, 0)
         return () => clearInterval(interval)
-    }, [])
+    }, [retry])
 
     const CapturarImagenes = () => {
         try{
             var imagen = webcam.current.getScreenshot()
             SetImagenPrincipal(imagen)
         }
-        catch{ }
+        catch{
+            setRetry(true)
+        }
     }
 
     const CerrarCapturadorIris = () => {

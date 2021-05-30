@@ -3,7 +3,7 @@ Description=Servicio de camara en el equipo.
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 ServicioCamara.py
+ExecStart=/usr/bin/sudo /usr/bin/python3 ServicioCamara.py
 WorkingDirectory=/home/pi
 StandardOutput=inherit
 StandardError=inherit
