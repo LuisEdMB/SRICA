@@ -3,12 +3,11 @@ Description=Servicio de camara en el equipo.
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/sudo /usr/bin/python3 ServicioCamara.py
-WorkingDirectory=/home/pi
-StandardOutput=inherit
-StandardError=inherit
+User=root
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/ServicioCamara.py
+StandardInput=tty-force
 Restart=always
-User=pi
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

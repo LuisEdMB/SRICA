@@ -7,12 +7,6 @@ from enum import IntEnum
 import neopixel
 import board
 
-ELECTROIMAN = 17
-
-LED_RGB_PIN = board.D18
-LED_RGB_COUNT = 24
-LED_RGB_BRILLO = 0.5
-
 class ModoControl(IntEnum):
     """
         Clase enum para los modos de control al equipo biométrico.
@@ -36,6 +30,10 @@ class ControlarComponentes():
         """
             Método que inicializa la clase.
         """
+        self.ELECTROIMAN = 17
+        self.LED_RGB_PIN = board.D18
+        self.LED_RGB_COUNT = 24
+        self.LED_RGB_BRILLO = 0.5
         super().__init__()
 
     def ControlarSegunModo(self, modo, texto = '', esperar = True):
@@ -52,21 +50,21 @@ class ControlarComponentes():
         elif modo == ModoControl.CerrarElectroiman:
             self.__ControlarElectroiman(GPIO.HIGH)
         elif modo == ModoControl.LedColorRojo:
-            self.__ControlarLed(255, 0, 0)
+            self.__ControlarLed(255, 0, 0, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorNaranja:
-            self.__ControlarLed(255, 165, 0, brillo = 0.01)
+            self.__ControlarLed(255, 165, 0, brillo = 0.01, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorAzul:
-            self.__ControlarLed(0, 0, 255)
+            self.__ControlarLed(0, 0, 255, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorBlanco:
             self.__ControlarLed(255, 255, 255, brillo = 1, array = [0, 1, 23])
         elif modo == ModoControl.LedColorVerde:
-            self.__ControlarLed(0, 255, 0)
+            self.__ControlarLed(0, 255, 0, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorAmarillo:
             self.__ControlarLed(255, 255, 0, brillo = 1, array = [0, 1, 23])
         elif modo == ModoControl.ReproducirAudio:
             self.__ReproducirAudio(texto, esperar)
         elif modo == ModoControl.NoLuz:
-            self.__ControlarLed(0,0,0)
+            self.__ControlarLed(0,0,0, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
     
     def __ControlarElectroiman(self, voltaje):
         """
@@ -76,10 +74,10 @@ class ControlarComponentes():
                 voltaje (int): Voltaje a establecer para controlar el electroiman.
         """
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(ELECTROIMAN, GPIO.OUT)
-        GPIO.output(ELECTROIMAN, voltaje)
+        GPIO.setup(self.ELECTROIMAN, GPIO.OUT)
+        GPIO.output(self.ELECTROIMAN, voltaje)
     
-    def __ControlarLed(self, rojo, verde, azul, brillo = LED_RGB_BRILLO, array = range(0, LED_RGB_COUNT)):
+    def __ControlarLed(self, rojo, verde, azul, brillo, array):
         """
             Método que controla el led RGB.
 
@@ -89,7 +87,7 @@ class ControlarComponentes():
                 azul (float): Color frecuencia azul.
                 array (array): Lista que contiene la numeración de LED's.
         """
-        ledRgb = neopixel.NeoPixel(LED_RGB_PIN, LED_RGB_COUNT, brightness = brillo, auto_write = False)
+        ledRgb = neopixel.NeoPixel(self.LED_RGB_PIN, self.LED_RGB_COUNT, brightness = brillo, auto_write = False)
         for x in array:
             ledRgb[x] = (rojo, verde, azul)
         ledRgb.show()
