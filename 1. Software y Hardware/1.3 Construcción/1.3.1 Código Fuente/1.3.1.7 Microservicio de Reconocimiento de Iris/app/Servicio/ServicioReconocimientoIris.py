@@ -28,8 +28,7 @@ class ServicioReconocimientoIris:
         imagenIrisNumpy = None
         if imagenIris is not None and imagenIris != "":
             imagenIrisNumpy = self.utilitario.ConvertirCadenaNumpyANumpyArray(imagenIris)
-        listadoPersonalActivo = db.query(PersonalEmpresa).filter(
-            PersonalEmpresa.IndicadorEstado == True).all()
+        listadoPersonalActivo = db.query(PersonalEmpresa).all()
         codigoPersonal = self.utilitario.CalcularDistanciaEntreImagenYBaseDeDatos(imagenIrisNumpy, 
             listadoPersonalActivo)
         return codigoPersonal

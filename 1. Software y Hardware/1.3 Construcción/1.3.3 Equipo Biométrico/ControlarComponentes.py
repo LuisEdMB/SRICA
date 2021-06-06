@@ -56,11 +56,11 @@ class ControlarComponentes():
         elif modo == ModoControl.LedColorAzul:
             self.__ControlarLed(0, 0, 255, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorBlanco:
-            self.__ControlarLed(255, 255, 255, brillo = 1, array = [0, 1, 23])
+            self.__ControlarLed(255, 255, 255, brillo = 0.8, array = [0, 1, 23])
         elif modo == ModoControl.LedColorVerde:
             self.__ControlarLed(0, 255, 0, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorAmarillo:
-            self.__ControlarLed(255, 255, 0, brillo = 1, array = [0, 1, 23])
+            self.__ControlarLed(255, 255, 0, brillo = 0.8, array = [0, 1, 23])
         elif modo == ModoControl.ReproducirAudio:
             self.__ReproducirAudio(texto, esperar)
         elif modo == ModoControl.NoLuz:
