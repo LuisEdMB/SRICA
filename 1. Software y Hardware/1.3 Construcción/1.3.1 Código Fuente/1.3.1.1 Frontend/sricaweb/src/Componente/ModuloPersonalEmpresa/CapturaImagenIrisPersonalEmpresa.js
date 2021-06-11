@@ -37,8 +37,8 @@ const estilos = makeStyles({
     plantillaImagenIris: {
         position: 'absolute',
         border: '2px solid green',
-        width: 240,
-        height: 150,
+        width: 230,
+        height: 140,
         margin: '0 auto'
     },
     cuadroImagenIris: {
