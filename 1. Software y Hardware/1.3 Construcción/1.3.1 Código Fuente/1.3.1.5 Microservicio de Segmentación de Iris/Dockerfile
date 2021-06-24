@@ -8,7 +8,7 @@ RUN apt install libgl1 -y
 
 RUN apt install libgl1-mesa-glx -y
 
-ADD requerimientos.txt /
+COPY ["1.3.1.5 Microservicio de Segmentación de Iris/requerimientos.txt", "/"]
 
 RUN pip install -r /requerimientos.txt
 
@@ -16,7 +16,7 @@ RUN pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=
 
 RUN pip install -U 'git+https://github.com/facebookresearch/detectron2.git'
 
-COPY ./app /app
+COPY ["1.3.1.5 Microservicio de Segmentación de Iris/app", "/app"]
 
 ENV PYTHONPATH "${PYTHONPATH}/app"
 

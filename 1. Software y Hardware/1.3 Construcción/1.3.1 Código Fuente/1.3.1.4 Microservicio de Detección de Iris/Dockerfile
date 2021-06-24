@@ -8,11 +8,11 @@ RUN apt install libgl1 -y
 
 RUN apt install libgl1-mesa-glx -y
 
-ADD requerimientos.txt /
+COPY ["1.3.1.4 Microservicio de Detección de Iris/requerimientos.txt", "/"]
 
 RUN pip install -r /requerimientos.txt
 
-COPY ./app /app
+COPY ["1.3.1.4 Microservicio de Detección de Iris/app", "/app"]
 
 ENV PYTHONPATH "${PYTHONPATH}/app"
 

@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+    srica-cliente-web:
+        image: ${DOCKER_REGISTRY-}srica-cliente-web
+        build:
+            context: .
+            dockerfile: 1.3.1.1 Frontend/sricaweb/Dockerfile
+
+    srica-api:
+        image: ${DOCKER_REGISTRY-}srica-api
+        build:
+            context: .
+            dockerfile: 1.3.1.2 Backend/sricaapi/Dockerfile
+
+    srica-microservicio-correo:
+        image: ${DOCKER_REGISTRY-}srica-microservicio-correo
+        build:
+            context: .
+            dockerfile: 1.3.1.3 Microservicio de Correo/Dockerfile
+
+    srica-microservicio-deteccion:
+        image: ${DOCKER_REGISTRY-}srica-microservicio-deteccion
+        build:
+            context: .
+            dockerfile: 1.3.1.4 Microservicio de Detección de Iris/Dockerfile
+
+    srica-microservicio-segmentacion:
+        image: ${DOCKER_REGISTRY-}srica-microservicio-segmentacion
+        build:
+            context: .
+            dockerfile: 1.3.1.5 Microservicio de Segmentación de Iris/Dockerfile
+
+    srica-microservicio-codificacion:
+        image: ${DOCKER_REGISTRY-}srica-microservicio-codificacion
+        build:
+            context: .
+            dockerfile: 1.3.1.6 Microservicio de Codificación de Iris/Dockerfile
+
+    srica-microservicio-reconocimiento:
+        image: ${DOCKER_REGISTRY-}srica-microservicio-reconocimiento
+        build:
+            context: .
+            dockerfile: 1.3.1.7 Microservicio de Reconocimiento de Iris/Dockerfile

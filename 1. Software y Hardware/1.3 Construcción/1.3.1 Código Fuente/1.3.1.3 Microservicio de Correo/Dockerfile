@@ -2,11 +2,11 @@ FROM python:3.6
 
 LABEL maintainer="Luis Eduardo Mamani Bedregal - bedregale@gmail.com"
 
-ADD requerimientos.txt /
+COPY ["1.3.1.3 Microservicio de Correo/requerimientos.txt", "/"]
 
 RUN pip install -r /requerimientos.txt
 
-COPY ./app /app
+COPY ["1.3.1.3 Microservicio de Correo/app", "/app"]
 
 ENV PYTHONPATH "${PYTHONPATH}/app"
 
