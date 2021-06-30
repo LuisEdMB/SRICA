@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API.SRICA.Distribucion.Hubs
 {
@@ -27,14 +28,13 @@ namespace API.SRICA.Distribucion.Hubs
         /// Constructor de la clase
         /// </summary>
         /// <param name="equipoBiometricoHub">Contexto del hub de equipos biométricos</param>
-        /// <param name="servicioEquipoBiometrico">Servicio de consultas y operaciones de equipos 
-        /// biométricos</param>
+        /// <param name="serviceProvider">Proveedor de servicios</param>
         public EquipoBiometricoWorker(
             IHubContext<EquipoBiometricoHub, IEquipoBiometricoHub> equipoBiometricoHub, 
-            IServicioEquipoBiometrico servicioEquipoBiometrico)
+            IServiceProvider serviceProvider)
         {
             _equipoBiometricoHub = equipoBiometricoHub;
-            _servicioEquipoBiometrico = servicioEquipoBiometrico;
+            _servicioEquipoBiometrico = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<IServicioEquipoBiometrico>();
         }
         /// <summary>
         /// Método abstracto de BackgroundService
