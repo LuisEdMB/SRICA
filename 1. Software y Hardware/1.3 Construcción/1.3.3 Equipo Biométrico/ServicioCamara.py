@@ -203,7 +203,7 @@ def EjecutarProceso():
                 if PROCESO_CAPTURANDO is True:
                     controlarComponentes.ControlarSegunModo(7)
                     PROCESO_CAPTURANDO = False
-                tiempoUnSegundo = time.time() + 1.25
+                tiempoUnSegundo = time.time() + 1
                 while time.time() < tiempoUnSegundo:
                     success, imagen = camaraNIR.read()
                     if success is True:
