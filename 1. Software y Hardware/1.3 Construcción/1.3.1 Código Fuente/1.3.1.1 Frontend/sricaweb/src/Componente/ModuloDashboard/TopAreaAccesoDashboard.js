@@ -142,8 +142,7 @@ export const TopAreaAccesoDashboard = () => {
                 </Typography><br/>
                 <div 
                     style={{ 
-                        overflowY: 'scroll', 
-                        overflowY: 'hidden', 
+                        overflowY: 'scroll',
                         width: 'auto',
                         height: 'auto',
                         alignContent: 'center'

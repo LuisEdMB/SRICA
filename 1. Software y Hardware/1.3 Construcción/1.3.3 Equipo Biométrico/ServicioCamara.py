@@ -8,7 +8,7 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
-subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=40 -c exposure_auto=1", shell = True)
+# subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=20 -c exposure_auto=1", shell = True)
 
 controlarComponentes = ControlarComponentes()
 
@@ -19,12 +19,12 @@ camaraNIR.set(4, 1080)
 SENSOR_DISTANCIA_TRIGGER = 23
 SENSOR_DISTANCIA_ECHO = 24
 
-DISTANCIA_MINIMA_CM = 7
+DISTANCIA_MINIMA_CM = 6
 DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
-URL_API_SRICA = "https://192.168.0.15:8001/"
-URL_MICROSERVICIO_DETECCION_IRIS = "https://192.168.0.15:8003/"
+URL_API_SRICA = "https://192.168.0.33:8001/"
+URL_MICROSERVICIO_DETECCION_IRIS = "https://192.168.0.33:8003/"
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SENSOR_DISTANCIA_TRIGGER, GPIO.OUT)
@@ -71,7 +71,7 @@ def ProcesarMicroservicioDeDeteccionDeOjos(imagen):
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
         controlarComponentes.ControlarSegunModo(8, "Fallo en capturar imágenes.", False)
-        time.sleep(2)
+        time.sleep(1)
         controlarComponentes.ControlarSegunModo(9)
 
 def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
@@ -100,7 +100,7 @@ def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
         controlarComponentes.ControlarSegunModo(8, "Fallo en reconocimiento.", False)
-        time.sleep(2)
+        time.sleep(1)
         controlarComponentes.ControlarSegunModo(9)
 
 def ConvertirNumpyArrayABase64(imagen):
@@ -149,19 +149,20 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
     IMAGEN_OJO_NIR = None
     resultado = json.loads(respuestaReconocimiento.text)
     if resultado["CodigoExcepcion"] == "":
-        nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
-        apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
+        # nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
+        # apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
         controlarComponentes.ControlarSegunModo(6)
         controlarComponentes.ControlarSegunModo(0)
-        controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
-            apellidoPersonal, False)
-        time.sleep(3)
+        # controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
+        #     apellidoPersonal, False)
+        controlarComponentes.ControlarSegunModo(8, "Acceso concedido", False)
+        time.sleep(1)
         controlarComponentes.ControlarSegunModo(1)
     else:
         controlarComponentes.ControlarSegunModo(2)
         controlarComponentes.ControlarSegunModo(1)
         controlarComponentes.ControlarSegunModo(8, "Acceso denegado.", False)
-    time.sleep(2)
+    time.sleep(1)
     controlarComponentes.ControlarSegunModo(9)
 
 def EjecutarProceso():
@@ -183,7 +184,7 @@ def EjecutarProceso():
 
             time.sleep(0.09)
             GPIO.output(SENSOR_DISTANCIA_TRIGGER, GPIO.HIGH)
-            time.sleep(0.00001)
+            time.sleep(0.0001)
             GPIO.output(SENSOR_DISTANCIA_TRIGGER, GPIO.LOW)
 
             while GPIO.input(SENSOR_DISTANCIA_ECHO) == 0:
@@ -199,7 +200,7 @@ def EjecutarProceso():
                 success, imagen = camaraNIR.read()
                 if success is True:
                     IMAGEN_ORIGINAL = imagen
-            if distancia <= DISTANCIA_MINIMA_CM:
+            if distancia <= DISTANCIA_MINIMA_CM and distancia > 1:
                 if PROCESO_CAPTURANDO is True:
                     controlarComponentes.ControlarSegunModo(7)
                     PROCESO_CAPTURANDO = False
@@ -208,7 +209,6 @@ def EjecutarProceso():
                     success, imagen = camaraNIR.read()
                     if success is True:
                         IMAGEN_OJO_NIR = imagen
-                controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
                 ProcesarDeteccionDeOjos()
             else:
                 if distancia <= DISTANCIA_MINIMA_CM_ENCENDER_LUZ:

@@ -33,7 +33,37 @@ class ControlarComponentes():
         self.ELECTROIMAN = 17
         self.LED_RGB_PIN = board.D18
         self.LED_RGB_COUNT = 24
-        self.LED_RGB_BRILLO = 0.5
+        self.LED_RGB_BRILLO = 0.3
+        self.LED_RGB_BLANCO_ARRAY = []
+        self.LED_RGB_BLANCO_ARRAY.append((0, 100, 100, 100))
+        self.LED_RGB_BLANCO_ARRAY.append((1, 80, 80, 80))
+        self.LED_RGB_BLANCO_ARRAY.append((2, 35, 35, 35))
+        self.LED_RGB_BLANCO_ARRAY.append((3, 15, 15, 15))
+        self.LED_RGB_BLANCO_ARRAY.append((9, 15, 15, 15))
+        self.LED_RGB_BLANCO_ARRAY.append((10, 35, 35, 35))
+        self.LED_RGB_BLANCO_ARRAY.append((11, 80, 80, 80))
+        self.LED_RGB_BLANCO_ARRAY.append((12, 100, 100, 100))
+        self.LED_RGB_BLANCO_ARRAY.append((13, 80, 80, 80))
+        self.LED_RGB_BLANCO_ARRAY.append((14, 35, 35, 35))
+        self.LED_RGB_BLANCO_ARRAY.append((15, 15, 15, 15))
+        self.LED_RGB_BLANCO_ARRAY.append((21, 15, 15, 15))
+        self.LED_RGB_BLANCO_ARRAY.append((22, 35, 35, 35))
+        self.LED_RGB_BLANCO_ARRAY.append((23, 80, 80, 80))
+        self.LED_RGB_AMARILLO_ARRAY = []
+        self.LED_RGB_AMARILLO_ARRAY.append((0, 100, 100, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((1, 80, 80, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((2, 35, 35, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((3, 15, 15, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((9, 15, 15, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((10, 35, 35, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((11, 80, 80, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((12, 100, 100, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((13, 80, 80, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((14, 35, 35, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((15, 15, 15, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((21, 15, 15, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((22, 35, 35, 0))
+        self.LED_RGB_AMARILLO_ARRAY.append((23, 80, 80, 0))
         super().__init__()
 
     def ControlarSegunModo(self, modo, texto = '', esperar = True):
@@ -56,11 +86,11 @@ class ControlarComponentes():
         elif modo == ModoControl.LedColorAzul:
             self.__ControlarLed(0, 0, 255, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorBlanco:
-            self.__ControlarLed(255, 255, 255, brillo = 0.8, array = [0, 1, 23])
+            self.__ControlarLedConMatiz(self.LED_RGB_BLANCO_ARRAY, brillo = 0.8)
         elif modo == ModoControl.LedColorVerde:
             self.__ControlarLed(0, 255, 0, brillo = self.LED_RGB_BRILLO, array = range(0, self.LED_RGB_COUNT))
         elif modo == ModoControl.LedColorAmarillo:
-            self.__ControlarLed(255, 255, 0, brillo = 0.8, array = [0, 1, 23])
+            self.__ControlarLedConMatiz(self.LED_RGB_AMARILLO_ARRAY,brillo = 0.8)
         elif modo == ModoControl.ReproducirAudio:
             self.__ReproducirAudio(texto, esperar)
         elif modo == ModoControl.NoLuz:
@@ -85,12 +115,22 @@ class ControlarComponentes():
                 rojo (float): Color frecuencia rojo.
                 verde (float): Color frecuencia verde.
                 azul (float): Color frecuencia azul.
+                brillo (float): Cantidad de brillo a aplicar en los LED's.
                 array (array): Lista que contiene la numeración de LED's.
         """
         ledRgb = neopixel.NeoPixel(self.LED_RGB_PIN, self.LED_RGB_COUNT, brightness = brillo, auto_write = False)
         for x in array:
             ledRgb[x] = (rojo, verde, azul)
         ledRgb.show()
+    
+    def __ControlarLedConMatiz(self, leds, brillo):
+        """
+        """
+        ledRgb = neopixel.NeoPixel(self.LED_RGB_PIN, self.LED_RGB_COUNT, brightness = brillo, auto_write = False)
+        for led, rojo, verde, azul in leds:
+            ledRgb[led] = (rojo, verde, azul)
+        ledRgb.show()
+
     
     def __ReproducirAudio(self, texto, esperar):
         """
