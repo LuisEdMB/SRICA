@@ -177,6 +177,8 @@ def EjecutarProceso():
     global DISTANCIA_MINIMA_CM_ENCENDER_LUZ
     try:
         while True:
+            nueva_lectura_distancia = False
+            contador_retry_lectura_distancia = 0
             _ = camaraNIR.read()
             if PROCESO_EN_ESPERA is True:
                 controlarComponentes.ControlarSegunModo(9)
@@ -188,10 +190,18 @@ def EjecutarProceso():
             GPIO.output(SENSOR_DISTANCIA_TRIGGER, GPIO.LOW)
 
             while GPIO.input(SENSOR_DISTANCIA_ECHO) == 0:
-                pulsoSonidoInicio = time.time()
+                pass
+                contador_retry_lectura_distancia +=1
+                if contador_retry_lectura_distancia == 5000:
+                    nueva_lectura_distancia = True
+                    break
+            pulsoSonidoInicio = time.time()
+            if nueva_lectura_distancia:
+                return False
             while GPIO.input(SENSOR_DISTANCIA_ECHO) == 1:
-                pulsoSonidoFin = time.time()
-                    
+                pass
+            pulsoSonidoFin = time.time()
+            
             pulsoSonidoDuracion = pulsoSonidoFin - pulsoSonidoInicio
             distancia = (pulsoSonidoDuracion * 34300) / 2
             distancia = round(distancia, 2)
@@ -218,6 +228,8 @@ def EjecutarProceso():
                 else:
                     PROCESO_CAPTURANDO = True
                     PROCESO_EN_ESPERA = True
+    except:
+        print("Error en procesamiento del servicio.")
     finally:
         controlarComponentes.ControlarSegunModo(9)
         camaraNIR.release()
