@@ -52,10 +52,10 @@ class RedSiamesaXception:
                 imagen = imagen[..., ::-1]
                 imagen = np.around(imagen/255.0, decimals = 12)
                 imagenEntrada = np.array([imagen])
-                imagenCodificada = self.modeloXception.predict(imagenEntrada)
+                imagenCodificada = self.modeloXception.predict_on_batch(imagenEntrada)
                 return imagenCodificada
     
-    def __PerdidaTriplete(self, y_true, y_pred, alpha = 0.2):
+    def __PerdidaTriplete(self, _, y_pred, alpha = 0.2):
         """
             Método que calcula la pérdida de triplete, escencial para la compilación
             del modelo de Xception.

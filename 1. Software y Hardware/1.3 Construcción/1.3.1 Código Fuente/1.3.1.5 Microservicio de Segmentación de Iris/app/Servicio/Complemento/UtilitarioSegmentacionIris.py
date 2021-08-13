@@ -2,6 +2,7 @@
 import cv2
 import numpy as np
 import base64
+from PIL import Image
 
 class UtilitarioSegmentacionIris:
 	"""
@@ -100,6 +101,25 @@ class UtilitarioSegmentacionIris:
 		else:
 			return self.__RemoverPorcionesNoIrisDeLaImagenRGB(imagen, mascaras,
 				posicionArrayIris, posicionArrayPupila, canalColorImagen)
+	
+	def AplicarCLAHE(self, imagen):
+		"""
+			Método que aplica la técnica "ecualización de histograma CLAHE" a una imagen
+			para mejorar sus características
+
+			Args:
+				imagen (ndarray): Imagen en numpy array.
+
+			Returns:
+				imagenConvertida (ndarray): Imagen convertida según técnica aplicada.
+		"""
+		imagen = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+		clahe = cv2.createCLAHE(clipLimit = 4.0, tileGridSize = (8,8))
+		claheConversion = clahe.apply(imagen)
+		imagenRGB = cv2.cvtColor(claheConversion, cv2.COLOR_BGR2RGB)
+		imagenConvertida = Image.fromarray(imagenRGB)
+		imagenConvertida = np.asarray(imagenConvertida)
+		return imagenConvertida
 
 	def __ObtenerIndiceDeArraySegunValor(self, array, valor):
 		"""

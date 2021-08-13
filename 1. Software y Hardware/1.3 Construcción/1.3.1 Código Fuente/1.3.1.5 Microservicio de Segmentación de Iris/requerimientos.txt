@@ -7,3 +7,4 @@ torchvision==0.8
 cython
 pyyaml
 scipy
+Pillow
