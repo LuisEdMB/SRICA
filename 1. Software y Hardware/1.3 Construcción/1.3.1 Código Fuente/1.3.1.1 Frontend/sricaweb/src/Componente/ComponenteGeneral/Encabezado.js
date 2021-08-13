@@ -5,7 +5,7 @@ import * as GeneralAction from '../../Accion/General'
 import { MenuEncabezado } from './MenuEncabezado'
 import { MenuUsuarioLogueadoEncabezado } from './MenuUsuarioLogueadoEncabezado'
 
-import { AppBar, Toolbar, Typography, makeStyles, createStyles, IconButton, Hidden, Drawer, useTheme } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, makeStyles, createStyles, IconButton, Hidden, Drawer, useTheme, Button, Tooltip } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
 const estilos = makeStyles((tema) => 
@@ -29,6 +29,12 @@ const estilos = makeStyles((tema) =>
             fontWeight: 'bold',
             borderRadius: 10
         },
+        tituloPermitirSSL: {
+            marginLeft: tema.spacing(2),
+            padding: tema.spacing(1),
+            fontWeight: 'bold',
+            borderRadius: 10
+        },
         drawer: {
             width: 240,
             flexShrink: 0
@@ -45,6 +51,12 @@ export const Encabezado = () => {
     const general = useSelector(store => store.General)
     const generalUsuarioLogueado = useSelector(store => store.GeneralUsuarioLogueado)
     const dispatch = useDispatch()
+
+    const AbrirEnlacesServicios = _ => {
+        window.open(process.env.REACT_APP_API, '_blank')
+        window.open(process.env.REACT_APP_MICROSERVICIO_DETECCION_IRIS_URL, '_blank')
+    }
+
     return(
         <div 
             className={ claseEstilo.principal }>
@@ -70,6 +82,16 @@ export const Encabezado = () => {
                         className={ claseEstilo.tituloSRICA }>
                         SRICA
                     </Typography>
+                    <Tooltip
+                        title='Click para permitir los servicios! (si fuera necesario)'>
+                        <Button
+                            color='secondary'
+                            variant='outlined'
+                            onClick={ _ => AbrirEnlacesServicios() }
+                            className={ claseEstilo.tituloPermitirSSL }>
+                            Click aquí!
+                        </Button>
+                    </Tooltip>
                     {
                         general.EncabezadoVisible && !generalUsuarioLogueado.CambiarDatosPorDefecto
                             ?   <MenuUsuarioLogueadoEncabezado/>
@@ -78,7 +100,7 @@ export const Encabezado = () => {
                 </Toolbar>
             </AppBar>
             <nav 
-                className={claseEstilo.drawer}>
+                className={ claseEstilo.drawer }>
                 <Hidden 
                     xsDown
                     implementation="css">
@@ -88,7 +110,7 @@ export const Encabezado = () => {
                         open = { general.MenuAbierto }
                         onClose={ () => dispatch(GeneralAction.CerrarMenu()) }
                         classes={ {
-                            paper: claseEstilo.drawerPaper,
+                            paper: claseEstilo.drawerPaper
                         } }
                         ModalProps={ {
                         keepMounted: true,
