@@ -114,7 +114,7 @@ class UtilitarioSegmentacionIris:
 				imagenConvertida (ndarray): Imagen convertida según técnica aplicada.
 		"""
 		imagen = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-		clahe = cv2.createCLAHE(clipLimit = 4.0, tileGridSize = (8,8))
+		clahe = cv2.createCLAHE(clipLimit = 6.0, tileGridSize = (8,8))
 		claheConversion = clahe.apply(imagen)
 		imagenRGB = cv2.cvtColor(claheConversion, cv2.COLOR_BGR2RGB)
 		imagenConvertida = Image.fromarray(imagenRGB)

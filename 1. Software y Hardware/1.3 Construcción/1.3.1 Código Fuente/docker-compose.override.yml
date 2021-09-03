@@ -4,8 +4,8 @@ services:
     srica-cliente-web:
         container_name: srica-cliente-web
         environment:
-            - REACT_APP_API=https://192.168.0.15:8001/
-            - REACT_APP_MICROSERVICIO_DETECCION_IRIS_URL=https://192.168.0.15:8003/
+            - REACT_APP_API=https://192.168.0.30:8001/
+            - REACT_APP_MICROSERVICIO_DETECCION_IRIS_URL=https://192.168.0.30:8003/
             - REACT_APP_CLAVESECRETA=V@7S6fAl-rkVDxh_HyJZL-oJB.i@jSOx
             - REACT_APP_VECTORIV=m2PCs0Ju9m1u3AIPkO3RUQ==
             - REACT_APP_AUDIENCIAPERMITIDA=qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu
@@ -28,7 +28,7 @@ services:
             - SEGURIDAD_IV=m2PCs0Ju9m1u3AIPkO3RUQ==
             - SEGURIDAD_ISSUER=srica
             - SEGURIDAD_AUDIENCIA_PERMITIDA=qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu
-            - BASE_DATOS_SERVIDOR=192.168.0.15
+            - BASE_DATOS_SERVIDOR=192.168.0.28
             - BASE_DATOS_CATALOGO=SRICA
             - BASE_DATOS_USUARIO=root
             - BASE_DATOS_CLAVE=root
@@ -39,7 +39,7 @@ services:
             - EQUIPO_BIOMETRICO_USUARIO_SSH=pi
             - EQUIPO_BIOMETRICO_CLAVE_SSH=raspberry
             - EQUIPO_BIOMETRICO_VARIABLE_ENTORNO_API=APP_API
-            - CLIENTE_SRICA_URL=https://192.168.0.15:8000/
+            - CLIENTE_SRICA_URL=https://192.168.0.30:8000/
             - MICROSERVICIO_CORREO_URL=https://srica-microservicio-correo
             - MICROSERVICIO_SEGMENTACION_IRIS_URL=https://srica-microservicio-segmentacion
             - MICROSERVICIO_CODIFICACION_IRIS_URL=https://srica-microservicio-codificacion
@@ -91,7 +91,7 @@ services:
     srica-microservicio-reconocimiento:
         container_name: srica-microservicio-reconocimiento
         environment:
-            - SERVIDOR_BASE_DATOS=192.168.0.15
+            - SERVIDOR_BASE_DATOS=192.168.0.28
             - PUERTO_BASE_DATOS=3306
             - BASE_DATOS=SRICA
             - USUARIO_BASE_DATOS=root

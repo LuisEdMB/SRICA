@@ -1,5 +1,5 @@
 # coding=utf-8
-from Complemento.RedSiamesaXception import RedSiamesaXception
+from Complemento.RedSiamesa import RedSiamesa
 from Complemento.Utilitario import Utilitario
 import json
 
@@ -11,7 +11,7 @@ class ServicioCodificacionIris:
         """
             Método inicializador de la clase.
         """
-        self.redSiamesa = RedSiamesaXception()
+        self.redSiamesa = RedSiamesa()
         self.redSiamesa.InicializarConfiguracion()
         self.utilitario = Utilitario()
         super().__init__()
