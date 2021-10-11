@@ -14,7 +14,7 @@ servicioReconocimientoIris = ServicioReconocimientoIris()
 PersonalEmpresa.base.metadata.create_all(bind = engine)
 
 class Modelo(BaseModel):
-    ImagenIris: str
+    IrisCodificado: str
 
 def ObtenerBaseDatos():
     db = sesion()
@@ -29,13 +29,13 @@ def ReconocerIris(datos: Modelo, db: Session = Depends(ObtenerBaseDatos)):
         Método de ruta para ejecutar el proceso de reconocimiento de imágenes de iris.
 
         Args:
-            datos (Modelo): Contiene las imágenes de iris (izquierdo y/o derecho) codificados
-                para el respectivo reconocimiento.
+            datos (Modelo): Contiene la imagen de iris codificado para el respectivo
+                reconocimiento.
 
         Returns:
             (object): Resultado del éxito o fracaso de la operación.
     """
     return EjecutarProceso(
         servicioReconocimientoIris.ReconocerIris,
-        datos.ImagenIris,
+        datos.IrisCodificado,
         db)

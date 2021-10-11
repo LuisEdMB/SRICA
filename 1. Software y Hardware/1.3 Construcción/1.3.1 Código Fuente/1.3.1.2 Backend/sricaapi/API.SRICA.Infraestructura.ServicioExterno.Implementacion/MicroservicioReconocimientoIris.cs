@@ -28,7 +28,7 @@ namespace API.SRICA.Infraestructura.ServicioExterno.Implementacion
         {
             var datos = JsonSerializer.Serialize(new
             {
-                ImagenIris = imagenIris
+                IrisCodificado = imagenIris
             });
             var peticion = new ModeloPeticionMicroservicio(urlServicio + "/reconocimientos-iris", "POST",
                 datos);

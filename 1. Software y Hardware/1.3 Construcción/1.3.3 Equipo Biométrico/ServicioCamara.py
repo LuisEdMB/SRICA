@@ -8,8 +8,6 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
-# subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=20 -c exposure_auto=1", shell = True)
-
 controlarComponentes = ControlarComponentes()
 
 camaraNIR = cv2.VideoCapture("/dev/video0")
@@ -23,8 +21,8 @@ DISTANCIA_MINIMA_CM = 7
 DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
-URL_API_SRICA = "https://192.168.0.15:8001/"
-URL_MICROSERVICIO_DETECCION_IRIS = "https://192.168.0.15:8003/"
+URL_API_SRICA = "https://192.168.0.17:5001/"
+URL_MICROSERVICIO_DETECCION_IRIS = "https://192.168.0.30:8003/"
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SENSOR_DISTANCIA_TRIGGER, GPIO.OUT)
@@ -45,6 +43,7 @@ def ProcesarDeteccionDeOjos():
     detecciones = ProcesarMicroservicioDeDeteccionDeOjos(IMAGEN_OJO_NIR)
     if detecciones is not None:
         if (detecciones["ImagenOjo"] != ""):
+            controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
             controlarComponentes.ControlarSegunModo(3)
             imagenOriginal = ""
             if IMAGEN_ORIGINAL is not None:
@@ -149,12 +148,8 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
     IMAGEN_OJO_NIR = None
     resultado = json.loads(respuestaReconocimiento.text)
     if resultado["CodigoExcepcion"] == "":
-        # nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
-        # apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
         controlarComponentes.ControlarSegunModo(6)
         controlarComponentes.ControlarSegunModo(0)
-        # controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
-        #     apellidoPersonal, False)
         controlarComponentes.ControlarSegunModo(8, "Acceso concedido", False)
         time.sleep(1)
         controlarComponentes.ControlarSegunModo(1)
@@ -212,6 +207,7 @@ def EjecutarProceso():
                     IMAGEN_ORIGINAL = imagen
             if distancia <= DISTANCIA_MINIMA_CM and distancia > 1:
                 if PROCESO_CAPTURANDO is True:
+                    controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
                     controlarComponentes.ControlarSegunModo(7)
                     PROCESO_CAPTURANDO = False
                 tiempoUnSegundo = time.time() + 1

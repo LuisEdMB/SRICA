@@ -28,7 +28,7 @@ services:
             - SEGURIDAD_IV=m2PCs0Ju9m1u3AIPkO3RUQ==
             - SEGURIDAD_ISSUER=srica
             - SEGURIDAD_AUDIENCIA_PERMITIDA=qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu
-            - BASE_DATOS_SERVIDOR=192.168.0.28
+            - BASE_DATOS_SERVIDOR=192.168.0.17
             - BASE_DATOS_CATALOGO=SRICA
             - BASE_DATOS_USUARIO=root
             - BASE_DATOS_CLAVE=root
@@ -91,7 +91,7 @@ services:
     srica-microservicio-reconocimiento:
         container_name: srica-microservicio-reconocimiento
         environment:
-            - SERVIDOR_BASE_DATOS=192.168.0.28
+            - SERVIDOR_BASE_DATOS=192.168.0.17
             - PUERTO_BASE_DATOS=3306
             - BASE_DATOS=SRICA
             - USUARIO_BASE_DATOS=root

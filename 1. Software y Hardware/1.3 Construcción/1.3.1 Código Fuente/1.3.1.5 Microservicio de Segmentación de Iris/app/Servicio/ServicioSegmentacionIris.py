@@ -33,8 +33,6 @@ class ServicioSegmentacionIris:
 			prediccionImagen = self.prediccion.PredecirImagen(imagen)
 			imagenSoloIris = self.utilitario.ObtenerImagenSoloDelIrisSegmentado(
 				imagen, prediccionImagen)
-			imagenIrisAjustado = self.utilitario.AutoajustarImagen(
-				imagenSoloIris)
-			imagenIrisAjustado = self.utilitario.AplicarCLAHE(imagenIrisAjustado)
+			imagenIrisAjustado = self.utilitario.AutoajustarImagen(imagenSoloIris)
 			irisSegmentado = self.utilitario.ConvertirNumpyArrayABase64(imagenIrisAjustado)
 		return irisSegmentado

@@ -101,25 +101,67 @@ class UtilitarioSegmentacionIris:
 		else:
 			return self.__RemoverPorcionesNoIrisDeLaImagenRGB(imagen, mascaras,
 				posicionArrayIris, posicionArrayPupila, canalColorImagen)
-	
-	def AplicarCLAHE(self, imagen):
+		
+	def ObtenerImagenSoloDelIrisSegmentadoTransparente(self, imagen, autoajustar=True):
 		"""
-			Método que aplica la técnica "ecualización de histograma CLAHE" a una imagen
-			para mejorar sus características
+			Método que obtiene la imagen del iris en transparencia
+			(sin fondos negros). Así mismo, se puede o no autoajustar la
+			imagen de acorde a sus bordes límites (ancho, alto).
 
 			Args:
-				imagen (ndarray): Imagen en numpy array.
+				imagen (ndarray): Imagen a realizar la transparencia.
+				autoajustar (bool): Si se desea autoajustar la imagen según
+					el ancho y alto del mismo.
 
 			Returns:
-				imagenConvertida (ndarray): Imagen convertida según técnica aplicada.
+				ndarray: Imagen con transparencia (y autoajustado).
 		"""
-		imagen = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-		clahe = cv2.createCLAHE(clipLimit = 6.0, tileGridSize = (8,8))
-		claheConversion = clahe.apply(imagen)
-		imagenRGB = cv2.cvtColor(claheConversion, cv2.COLOR_BGR2RGB)
-		imagenConvertida = Image.fromarray(imagenRGB)
-		imagenConvertida = np.asarray(imagenConvertida)
-		return imagenConvertida
+		imagenTransparente = self.__TransformarImagenATransparente(imagen)
+		if autoajustar:
+			imagenTransparente = self.AutoajustarImagen(imagenTransparente)
+		return imagenTransparente
+
+	def AutoajustarImagen(self, imagen):
+		"""
+			Método que recorta la imagen (autoajustar) de acuerdo a sus límites bordes
+			(ancho, alto).
+
+			Args:
+				imagen (ndarray): Imagen a autoajustar.
+
+			Returns:
+				ndarray: Imagen autoajustada.
+		"""
+		dataImagen = np.asarray(imagen)
+		dataImagenBlancoNegro = dataImagen.max(axis=2)
+		columnasNoVaciasImagen = np.where(dataImagenBlancoNegro.max(axis=0) > 0)[0]
+		filasNoVaciasImagen = np.where(dataImagenBlancoNegro.max(axis=1) > 0)[0]
+		cuadroRecortado = (min(filasNoVaciasImagen), max(filasNoVaciasImagen),
+			min(columnasNoVaciasImagen), max(columnasNoVaciasImagen))
+		imagen = dataImagen[cuadroRecortado[0]:cuadroRecortado[1] + 1,
+		         cuadroRecortado[2]:cuadroRecortado[3] + 1, :]
+		return imagen
+
+	def TransformarImagenDeCartesianoAPolar(self, imagen, centroCoordenada):
+		"""
+			Método que transforma una imagen de coordenadas cartesianas a
+			coordenadas polares.
+
+			Args:
+				imagen (ndarray): Imagen a transformar.
+				centroCoordenada (tuple): Coordenada de punto central.
+
+			Returns:
+				imagenPolar (ndarray): Imagen transformado a coordenadas
+					polares.
+		"""
+		radio = np.sqrt(((imagen.shape[0] / 2.0) ** 2.0) + ((imagen.shape[1] / 2.0) ** 2.0))
+		imagenPolar = cv2.linearPolar(
+			imagen,
+			centroCoordenada,
+			radio,
+			cv2.WARP_FILL_OUTLIERS + cv2.INTER_LINEAR)
+		return imagenPolar
 
 	def __ObtenerIndiceDeArraySegunValor(self, array, valor):
 		"""
@@ -221,25 +263,6 @@ class UtilitarioSegmentacionIris:
 					mascaras[:, :, posicionArrayIris] - mascaras[:, :, posicionArrayPupila])
 		return imagen
 
-	def ObtenerImagenSoloDelIrisSegmentadoTransparente(self, imagen, autoajustar=True):
-		"""
-			Método que obtiene la imagen del iris en transparencia
-			(sin fondos negros). Así mismo, se puede o no autoajustar la
-			imagen de acorde a sus bordes límites (ancho, alto).
-
-			Args:
-				imagen (ndarray): Imagen a realizar la transparencia.
-				autoajustar (bool): Si se desea autoajustar la imagen según
-					el ancho y alto del mismo.
-
-			Returns:
-				ndarray: Imagen con transparencia (y autoajustado).
-		"""
-		imagenTransparente = self.__TransformarImagenATransparente(imagen)
-		if autoajustar:
-			imagenTransparente = self.AutoajustarImagen(imagenTransparente)
-		return imagenTransparente
-
 	def __TransformarImagenATransparente(self, imagen):
 		"""
 			Método que transforma una imagen a transparencia (sin fondos negros).
@@ -255,45 +278,3 @@ class UtilitarioSegmentacionIris:
 		porcionColorNegroImagen = (imagen[:, :, 0:3] == [0, 0, 0]).all(2)
 		imagen[porcionColorNegroImagen] = (0, 0, 0, 0)
 		return imagen
-
-	def AutoajustarImagen(self, imagen):
-		"""
-			Método que recorta la imagen (autoajustar) de acuerdo a sus límites bordes
-			(ancho, alto).
-
-			Args:
-				imagen (ndarray): Imagen a autoajustar.
-
-			Returns:
-				ndarray: Imagen autoajustada.
-		"""
-		dataImagen = np.asarray(imagen)
-		dataImagenBlancoNegro = dataImagen.max(axis=2)
-		columnasNoVaciasImagen = np.where(dataImagenBlancoNegro.max(axis=0) > 0)[0]
-		filasNoVaciasImagen = np.where(dataImagenBlancoNegro.max(axis=1) > 0)[0]
-		cuadroRecortado = (min(filasNoVaciasImagen), max(filasNoVaciasImagen),
-			min(columnasNoVaciasImagen), max(columnasNoVaciasImagen))
-		imagen = dataImagen[cuadroRecortado[0]:cuadroRecortado[1] + 1,
-		         cuadroRecortado[2]:cuadroRecortado[3] + 1, :]
-		return imagen
-
-	def TransformarImagenDeCartesianoAPolar(self, imagen, centroCoordenada):
-		"""
-			Método que transforma una imagen de coordenadas cartesianas a
-			coordenadas polares.
-
-			Args:
-				imagen (ndarray): Imagen a transformar.
-				centroCoordenada (tuple): Coordenada de punto central.
-
-			Returns:
-				imagenPolar (ndarray): Imagen transformado a coordenadas
-					polares.
-		"""
-		radio = np.sqrt(((imagen.shape[0] / 2.0) ** 2.0) + ((imagen.shape[1] / 2.0) ** 2.0))
-		imagenPolar = cv2.linearPolar(
-			imagen,
-			centroCoordenada,
-			radio,
-			cv2.WARP_FILL_OUTLIERS + cv2.INTER_LINEAR)
-		return imagenPolar

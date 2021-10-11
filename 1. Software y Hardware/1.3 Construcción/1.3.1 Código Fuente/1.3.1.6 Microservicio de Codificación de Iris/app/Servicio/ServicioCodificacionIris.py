@@ -1,5 +1,4 @@
 # coding=utf-8
-from Complemento.RedSiamesa import RedSiamesa
 from Complemento.Utilitario import Utilitario
 import json
 
@@ -11,8 +10,6 @@ class ServicioCodificacionIris:
         """
             Método inicializador de la clase.
         """
-        self.redSiamesa = RedSiamesa()
-        self.redSiamesa.InicializarConfiguracion()
         self.utilitario = Utilitario()
         super().__init__()
     
@@ -41,6 +38,14 @@ class ServicioCodificacionIris:
         irisCodificado = ""
         if imagen is not None and imagen != "":
             imagenIris = self.utilitario.ConvertirBase64ANumpyArray(imagen)
-            imagenIrisCodificado = self.redSiamesa.CodificarImagen(imagenIris)
-            irisCodificado = json.dumps(imagenIrisCodificado.tolist())
+            imagenIris = self.utilitario.CambiarTamanioDeImagen(imagenIris)
+            imagenIrisClahe = self.utilitario.AplicarCLAHE(imagenIris)
+            imagenEdgeHorizontal, imagenEdgeVertical, imagenGradiente = self.utilitario.AplicarSobelEdgeDetector(imagenIrisClahe)
+            template, mask = self.utilitario.AplicarLogGaborEncoding(imagenEdgeHorizontal)
+            print('template:', template)
+            print('mask:', mask)
+            irisCodificado = json.dumps({
+                'template': template.tolist(),
+                'mask': mask.tolist()
+            })
         return irisCodificado
