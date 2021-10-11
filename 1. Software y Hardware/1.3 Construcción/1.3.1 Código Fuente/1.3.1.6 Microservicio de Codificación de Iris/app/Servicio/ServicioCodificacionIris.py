@@ -42,8 +42,6 @@ class ServicioCodificacionIris:
             imagenIrisClahe = self.utilitario.AplicarCLAHE(imagenIris)
             imagenEdgeHorizontal, imagenEdgeVertical, imagenGradiente = self.utilitario.AplicarSobelEdgeDetector(imagenIrisClahe)
             template, mask = self.utilitario.AplicarLogGaborEncoding(imagenEdgeHorizontal)
-            print('template:', template)
-            print('mask:', mask)
             irisCodificado = json.dumps({
                 'template': template.tolist(),
                 'mask': mask.tolist()
