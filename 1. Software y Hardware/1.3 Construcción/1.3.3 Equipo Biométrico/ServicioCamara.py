@@ -8,6 +8,8 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
+# subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=1000 -c exposure_auto=1", shell = True)
+
 controlarComponentes = ControlarComponentes()
 
 camaraNIR = cv2.VideoCapture("/dev/video0")
@@ -17,7 +19,7 @@ camaraNIR.set(4, 1080)
 SENSOR_DISTANCIA_TRIGGER = 23
 SENSOR_DISTANCIA_ECHO = 24
 
-DISTANCIA_MINIMA_CM = 7
+DISTANCIA_MINIMA_CM = 9
 DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
@@ -43,8 +45,6 @@ def ProcesarDeteccionDeOjos():
     detecciones = ProcesarMicroservicioDeDeteccionDeOjos(IMAGEN_OJO_NIR)
     if detecciones is not None:
         if (detecciones["ImagenOjo"] != ""):
-            controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
-            controlarComponentes.ControlarSegunModo(3)
             imagenOriginal = ""
             if IMAGEN_ORIGINAL is not None:
                 imagenOriginal = ConvertirNumpyArrayABase64(cv2.resize(IMAGEN_ORIGINAL, (640, 480)))
@@ -179,7 +179,7 @@ def EjecutarProceso():
                 controlarComponentes.ControlarSegunModo(9)
                 PROCESO_EN_ESPERA = False
 
-            time.sleep(0.09)
+            time.sleep(0.01)
             GPIO.output(SENSOR_DISTANCIA_TRIGGER, GPIO.HIGH)
             time.sleep(0.0001)
             GPIO.output(SENSOR_DISTANCIA_TRIGGER, GPIO.LOW)
@@ -208,17 +208,18 @@ def EjecutarProceso():
             if distancia <= DISTANCIA_MINIMA_CM and distancia > 1:
                 if PROCESO_CAPTURANDO is True:
                     controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
-                    controlarComponentes.ControlarSegunModo(7)
+                    controlarComponentes.ControlarSegunModo(5)
                     PROCESO_CAPTURANDO = False
-                tiempoUnSegundo = time.time() + 1
+                tiempoUnSegundo = time.time() + 0.8
                 while time.time() < tiempoUnSegundo:
                     success, imagen = camaraNIR.read()
                     if success is True:
                         IMAGEN_OJO_NIR = imagen
+                controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
+                controlarComponentes.ControlarSegunModo(3)
                 ProcesarDeteccionDeOjos()
             else:
                 if distancia <= DISTANCIA_MINIMA_CM_ENCENDER_LUZ:
-                    controlarComponentes.ControlarSegunModo(5)
                     PROCESO_CAPTURANDO = True
                     PROCESO_EN_ESPERA = False
                 else:

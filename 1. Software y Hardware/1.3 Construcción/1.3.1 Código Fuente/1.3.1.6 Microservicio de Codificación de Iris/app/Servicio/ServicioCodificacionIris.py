@@ -1,4 +1,5 @@
 # coding=utf-8
+from Complemento.RedSiamesaResnet50 import RedSiamesaResnet50
 from Complemento.Utilitario import Utilitario
 import json
 
@@ -10,6 +11,8 @@ class ServicioCodificacionIris:
         """
             Método inicializador de la clase.
         """
+        self.resnet50 = RedSiamesaResnet50()
+        self.resnet50.CargarModeloResnet50()
         self.utilitario = Utilitario()
         super().__init__()
     
@@ -38,12 +41,7 @@ class ServicioCodificacionIris:
         irisCodificado = ""
         if imagen is not None and imagen != "":
             imagenIris = self.utilitario.ConvertirBase64ANumpyArray(imagen)
-            imagenIris = self.utilitario.CambiarTamanioDeImagen(imagenIris)
-            imagenIrisClahe = self.utilitario.AplicarCLAHE(imagenIris)
-            imagenEdgeHorizontal, imagenEdgeVertical, imagenGradiente = self.utilitario.AplicarSobelEdgeDetector(imagenIrisClahe)
-            template, mask = self.utilitario.AplicarLogGaborEncoding(imagenEdgeHorizontal)
-            irisCodificado = json.dumps({
-                'template': template.tolist(),
-                'mask': mask.tolist()
-            })
+            imagenIrisMejorado = self.utilitario.AplicarEqualizacionDeHistograma(imagenIris)
+            caracteristicasIris = self.resnet50.ExtraerCaracteristicasDeImagen(imagenIrisMejorado)
+            irisCodificado = json.dumps(caracteristicasIris.tolist())
         return irisCodificado

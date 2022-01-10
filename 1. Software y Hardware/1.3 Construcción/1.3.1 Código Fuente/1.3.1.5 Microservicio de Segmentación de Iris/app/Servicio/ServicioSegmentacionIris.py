@@ -31,8 +31,11 @@ class ServicioSegmentacionIris:
 		if imagenOjo is not None and imagenOjo != "":
 			imagen = self.utilitario.ConvertirBase64ANumpyArray(imagenOjo)
 			prediccionImagen = self.prediccion.PredecirImagen(imagen)
-			imagenSoloIris = self.utilitario.ObtenerImagenSoloDelIrisSegmentado(
-				imagen, prediccionImagen)
-			imagenIrisAjustado = self.utilitario.AutoajustarImagen(imagenSoloIris)
-			irisSegmentado = self.utilitario.ConvertirNumpyArrayABase64(imagenIrisAjustado)
+			coordenadaCentroPupila = self.utilitario.ObtenerCoordenadaCentralDeLaPupila(prediccionImagen)
+			imagenSoloIris = self.utilitario.ObtenerImagenSoloDelIrisSegmentado(imagen, prediccionImagen)
+			irisPolar = self.utilitario.TransformarImagenDeCartesianoAPolar(imagenSoloIris, coordenadaCentroPupila)
+			irisAjustado = self.utilitario.AutoajustarImagen(irisPolar)
+			irisRecortado = self.utilitario.RecortarImagenDeIris(irisAjustado)
+			irisRecortado = self.utilitario.GirarImagenDeIris(irisRecortado, 3)
+			irisSegmentado = self.utilitario.ConvertirNumpyArrayABase64(irisRecortado)
 		return irisSegmentado

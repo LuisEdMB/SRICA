@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import base64
 from PIL import Image
+from skimage.transform import warp_polar
+from skimage.util import img_as_float
 
 class UtilitarioSegmentacionIris:
 	"""
@@ -69,8 +71,8 @@ class UtilitarioSegmentacionIris:
 		posicionArrayPupila = self.__ObtenerIndiceDeArraySegunValor(clasesPredichas,
 			self.PUPILA_NUMERO_CLASE)
 		cajaPupila = cajasPredichas[posicionArrayPupila].tensor[0]
-		coordenada = ((cajaPupila[0].numpy() + cajaPupila[2].numpy()) / 2,
-			(cajaPupila[1].numpy() + cajaPupila[3].numpy()) / 2)
+		coordenada = ((cajaPupila[1].numpy() + cajaPupila[3].numpy()) / 2,
+			(cajaPupila[0].numpy() + cajaPupila[2].numpy()) / 2)
 		return coordenada
 
 	def ObtenerImagenSoloDelIrisSegmentado(self, imagen, prediccion):
@@ -130,7 +132,7 @@ class UtilitarioSegmentacionIris:
 				imagen (ndarray): Imagen a autoajustar.
 
 			Returns:
-				ndarray: Imagen autoajustada.
+				imagen (ndarray): Imagen autoajustada.
 		"""
 		dataImagen = np.asarray(imagen)
 		dataImagenBlancoNegro = dataImagen.max(axis=2)
@@ -155,13 +157,38 @@ class UtilitarioSegmentacionIris:
 				imagenPolar (ndarray): Imagen transformado a coordenadas
 					polares.
 		"""
-		radio = np.sqrt(((imagen.shape[0] / 2.0) ** 2.0) + ((imagen.shape[1] / 2.0) ** 2.0))
-		imagenPolar = cv2.linearPolar(
-			imagen,
-			centroCoordenada,
-			radio,
-			cv2.WARP_FILL_OUTLIERS + cv2.INTER_LINEAR)
-		return imagenPolar
+		imagen = img_as_float(imagen)
+		imagenPolar = warp_polar(imagen, center = centroCoordenada, multichannel = True)
+		return imagenPolar * 255
+	
+	def RecortarImagenDeIris(self, imagen):
+		"""
+			Método que recorta una imagen al tamaño 38 (ancho) x 200 (alto) (giro anti-horario).
+
+			Args:
+				imagen (ndarray): Imagen a recortar.
+			
+			Returns:
+				imagenRecortada (ndarray): Imagen recortada con el tamaño 38 x 200.
+		"""
+		imagen = Image.fromarray(imagen.astype(np.uint8))
+		imagenRecortada = np.array(imagen.crop((7, 0, 45, 200)))
+		return imagenRecortada
+
+	def GirarImagenDeIris(self, imagen, cantidadGiros):
+		"""
+			Método que gira 90° una imagen, según una cantidad de veces.
+
+			Args:
+				imagen (ndarray): Imagen a girar 90°.
+				cantidadGiros (int): Cantidad de giros.
+			
+			Returns:
+				imagen (ndarray): Cantidad con rotación.
+		"""
+		for _ in range(0, cantidadGiros):
+			imagen = np.rot90(imagen)
+		return imagen
 
 	def __ObtenerIndiceDeArraySegunValor(self, array, valor):
 		"""

@@ -68,10 +68,7 @@ class UtilitarioDeteccionIris:
 		imagenConDetecciones = imagen
 		for (clase, puntaje, caja) in zip(clases, puntajes, cajas):
 			color = (0, 255, 255)
-			etiqueta = "%s : %f" % (self.CLASES[clase[0]], puntaje)
 			cv2.rectangle(imagenConDetecciones, caja, color, 2)
-			cv2.putText(imagenConDetecciones, etiqueta, (caja[0], caja[1] - 10), 
-				cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 		imagenOjo = self.__ObtenerSoloOjosDeImagen(imagenOriginal, cajas)
 		return imagenConDetecciones, imagenOjo
 

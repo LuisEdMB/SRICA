@@ -26,12 +26,10 @@ class ServicioReconocimientoIris:
             Returns:
                 codigoPersonal (str): Código del personal de la empresa reconocido.
         """
-        template, mask = None, None
+        imagenIrisNumpy = None
         if irisCodificado is not None and irisCodificado != "":
-            dicts = self.utilitario.ConvertirCadenaDiccionarioAObjetoDiccionario(irisCodificado)
-            template = np.array(dicts["template"])
-            mask = np.array(dicts["mask"])
+            imagenIrisNumpy = self.utilitario.ConvertirCadenaNumpyANumpyArray(irisCodificado)
         listadoPersonal = db.query(PersonalEmpresa).all()
-        codigoPersonal = self.utilitario.CalcularDistanciaEntreImagenYBaseDeDatos(template, mask,
-            listadoPersonal)
+        codigoPersonal = self.utilitario.CalcularDistanciaEntreImagenYBaseDeDatos(
+            imagenIrisNumpy, listadoPersonal)
         return codigoPersonal
