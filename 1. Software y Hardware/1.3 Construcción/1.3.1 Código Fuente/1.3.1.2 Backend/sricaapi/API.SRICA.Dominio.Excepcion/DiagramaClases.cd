@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="API.SRICA.Dominio.Excepcion.ExcepcionAplicacionEquipoBiometricoPersonalizada">
-    <Position X="1" Y="0.75" Width="4.5" />
+    <Position X="0.5" Y="0.5" Width="4.75" />
     <NestedTypes>
       <Enum Name="API.SRICA.Dominio.Excepcion.ExcepcionAplicacionEquipoBiometricoPersonalizada.CodigoExcepcionPersonalizado" Collapsed="true">
         <TypeIdentifier>
@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="API.SRICA.Dominio.Excepcion.ExcepcionAplicacionPersonalizada">
-    <Position X="5.75" Y="0.75" Width="3.5" />
+    <Position X="0.5" Y="3.75" Width="3.75" />
     <NestedTypes>
       <Enum Name="API.SRICA.Dominio.Excepcion.ExcepcionAplicacionPersonalizada.CodigoExcepcionPersonalizado" Collapsed="true">
         <TypeIdentifier>
@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="API.SRICA.Dominio.Excepcion.ExcepcionEquipoBiometricoPersonalizada">
-    <Position X="1.25" Y="4" Width="4" />
+    <Position X="5.5" Y="0.5" Width="4" />
     <NestedTypes>
       <Enum Name="API.SRICA.Dominio.Excepcion.ExcepcionEquipoBiometricoPersonalizada.CodigoExcepcionPersonalizado" Collapsed="true">
         <TypeIdentifier>
@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="API.SRICA.Dominio.Excepcion.ExcepcionPersonalizada">
-    <Position X="5.75" Y="3" Width="3" />
+    <Position X="5.5" Y="3.25" Width="3.5" />
     <NestedTypes>
       <Enum Name="API.SRICA.Dominio.Excepcion.ExcepcionPersonalizada.CodigoExcepcionPersonalizado" Collapsed="true">
         <TypeIdentifier>
