@@ -41,6 +41,8 @@ class ServicioCodificacionIris:
         irisCodificado = ""
         if imagen is not None and imagen != "":
             imagenIris = self.utilitario.ConvertirBase64ANumpyArray(imagen)
+            imagenIris = self.utilitario.BlurImagen(imagenIris)
+            imagenIris = self.utilitario.AutoContraste(imagenIris)
             imagenIrisMejorado = self.utilitario.AplicarEqualizacionDeHistograma(imagenIris)
             caracteristicasIris = self.resnet50.ExtraerCaracteristicasDeImagen(imagenIrisMejorado)
             irisCodificado = json.dumps(caracteristicasIris.tolist())

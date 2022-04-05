@@ -26,7 +26,7 @@ class RedSiamesaResnet50:
             with self.session.as_default():
                 self.modelo = keras.applications.resnet50.ResNet50(
                     weights = '/app/Servicio/Complemento/Resnet50.h5py',
-                    input_shape = (38, 200, 3),
+                    input_shape = (32, 210, 3),
                     classes = 2000)
                 self.modelo.summary()
     
@@ -45,7 +45,7 @@ class RedSiamesaResnet50:
             with self.session.as_default():
                 imagen = np.expand_dims(imagen, axis = 0)
                 capaResnet50 = keras.Model(inputs = self.modelo.input,
-                    outputs = self.modelo.get_layer('res2c_branch2c').output)
+                    outputs = self.modelo.get_layer('res5c_branch2c').output)
                 imagen = keras.applications.resnet50.preprocess_input(imagen)
                 caracteristicas = capaResnet50.predict(imagen)
                 return caracteristicas

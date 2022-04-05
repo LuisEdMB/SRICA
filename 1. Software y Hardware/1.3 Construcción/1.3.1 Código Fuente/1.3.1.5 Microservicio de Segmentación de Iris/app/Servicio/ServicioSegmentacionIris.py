@@ -34,6 +34,7 @@ class ServicioSegmentacionIris:
 			coordenadaCentroPupila = self.utilitario.ObtenerCoordenadaCentralDeLaPupila(prediccionImagen)
 			imagenSoloIris = self.utilitario.ObtenerImagenSoloDelIrisSegmentado(imagen, prediccionImagen)
 			irisPolar = self.utilitario.TransformarImagenDeCartesianoAPolar(imagenSoloIris, coordenadaCentroPupila)
+			irisPolar = self.utilitario.RemoverSeccionPupila(irisPolar, prediccionImagen)
 			irisAjustado = self.utilitario.AutoajustarImagen(irisPolar)
 			irisRecortado = self.utilitario.RecortarImagenDeIris(irisAjustado)
 			irisRecortado = self.utilitario.GirarImagenDeIris(irisRecortado, 3)

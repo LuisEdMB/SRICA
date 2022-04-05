@@ -30,7 +30,8 @@ class ServicioDeteccionIris:
 					realizadas (imagen general, imagen del ojo detectado).
 		"""
 		imagen = self.utilitario.ConvertirBase64ANumpyArray(imagen)
-		clases, puntajes, cajas = self.prediccion.PredecirImagen(imagen)
+		imagenCopia = self.utilitario.BlurImagen(imagen)
+		clases, puntajes, cajas = self.prediccion.PredecirImagen(imagenCopia)
 		imagenConDetecciones, imagenOjo = self.utilitario.ProcesarDetecciones(imagen, 
 			clases, puntajes, cajas)
 		resultadoDeteccion = {

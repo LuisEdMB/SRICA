@@ -71,6 +71,18 @@ class UtilitarioDeteccionIris:
 			cv2.rectangle(imagenConDetecciones, caja, color, 2)
 		imagenOjo = self.__ObtenerSoloOjosDeImagen(imagenOriginal, cajas)
 		return imagenConDetecciones, imagenOjo
+	
+	def BlurImagen(self, imagen):
+		"""
+			Método que aplica Blur a una imagen.
+
+			Args:
+				imagen (ndarray): Imagen original de referencia.
+			
+			Returns:
+				(ndarray): Imagen con efecto Blur aplicado.
+		"""
+        return cv2.GaussianBlur(imagen, (7, 7), 0)
 
 	def __ObtenerSoloOjosDeImagen(self, imagen, cajas):
 		"""

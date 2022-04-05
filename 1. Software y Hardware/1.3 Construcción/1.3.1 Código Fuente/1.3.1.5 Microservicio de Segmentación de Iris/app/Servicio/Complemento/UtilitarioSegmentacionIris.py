@@ -98,11 +98,10 @@ class UtilitarioSegmentacionIris:
 		mascaras = self.__ConvertirValoresDelArrayATipoDeDatoEntero(mascaras)
 		canalColorImagen = self.__ObtenerCanalDeColorDeUnaImagen(imagen)
 		if canalColorImagen == 0:
-			return self.__RemoverPorcionesNoIrisDeLaImagenNIR(imagen, mascaras,
-				posicionArrayIris, posicionArrayPupila)
+			return self.__RemoverPorcionesNoIrisDeLaImagenNIR(imagen, mascaras, posicionArrayIris)
 		else:
-			return self.__RemoverPorcionesNoIrisDeLaImagenRGB(imagen, mascaras,
-				posicionArrayIris, posicionArrayPupila, canalColorImagen)
+			return self.__RemoverPorcionesNoIrisDeLaImagenRGB(imagen, mascaras, posicionArrayIris, 
+				canalColorImagen)
 		
 	def ObtenerImagenSoloDelIrisSegmentadoTransparente(self, imagen, autoajustar=True):
 		"""
@@ -161,18 +160,40 @@ class UtilitarioSegmentacionIris:
 		imagenPolar = warp_polar(imagen, center = centroCoordenada, multichannel = True)
 		return imagenPolar * 255
 	
+	def RemoverSeccionPupila(self, imagen, prediccion):
+		"""
+			Método que remueve la sección de la pupila desde la imagen polar transformada.
+
+			Args:
+				imagen (ndarray): Imagen polar a recortar.
+				prediccion (DefaultPredictor): Contiene la predicción de
+					la imagen original.
+
+			Returns:
+				imagenSinPupila (ndarray): Imagen polar sin la sección de pupila.
+		"""
+		clasesPredichas = prediccion["instances"].to("cpu").pred_classes
+		cajasPredichas = prediccion["instances"].to("cpu").pred_boxes
+		posicionArrayPupila = self.__ObtenerIndiceDeArraySegunValor(clasesPredichas,
+			self.PUPILA_NUMERO_CLASE)
+		cajaPupila = cajasPredichas[posicionArrayPupila].tensor[0]
+		alto, ancho, _ = imagen.shape
+		anchoPupila = (cajaPupila[3] - cajaPupila[1]) / 2
+		imagenSinPupila = imagen[0: alto, int(anchoPupila): ancho, :]
+		return imagenSinPupila
+	
 	def RecortarImagenDeIris(self, imagen):
 		"""
-			Método que recorta una imagen al tamaño 38 (ancho) x 200 (alto) (giro anti-horario).
+			Método que recorta una imagen al tamaño 32 (ancho) x 210 (alto) (giro anti-horario).
 
 			Args:
 				imagen (ndarray): Imagen a recortar.
 			
 			Returns:
-				imagenRecortada (ndarray): Imagen recortada con el tamaño 38 x 200.
+				imagenRecortada (ndarray): Imagen recortada con el tamaño 32 x 210.
 		"""
 		imagen = Image.fromarray(imagen.astype(np.uint8))
-		imagenRecortada = np.array(imagen.crop((7, 0, 45, 200)))
+		imagenRecortada = np.array(imagen.crop((6, 0, 38, 210)))
 		return imagenRecortada
 
 	def GirarImagenDeIris(self, imagen, cantidadGiros):
@@ -245,9 +266,9 @@ class UtilitarioSegmentacionIris:
 		return 0
 
 	def __RemoverPorcionesNoIrisDeLaImagenNIR(self, imagen, mascaras,
-		posicionArrayIris, posicionArrayPupila):
+		posicionArrayIris):
 		"""
-			Método que remueve los pixeles con las porciones no iris (ojo, pupila)
+			Método que remueve los pixeles con las porciones no iris (ojo)
 			de la imagen segmentada, para imagenes Blanco-Negro (NIR).
 
 			Args:
@@ -256,19 +277,17 @@ class UtilitarioSegmentacionIris:
 					(segmentaciones) predichas de la imagen de iris.
 				posicionArrayIris (int): Indice de posicionamiento donde
 					está ubicado la segmentación del iris.
-				posicionArrayPupila (int): Indice de posicionamiento donde
-					está ubicado la segmentación de la pupila.
 
 			Returns:
 				ndarray: Imagen sin porciones no iris.
 		"""
-		imagen[:, :] = imagen[:, :] * (mascaras[:, :, posicionArrayIris] - mascaras[:, :, posicionArrayPupila])
+		imagen[:, :] = imagen[:, :] * mascaras[:, :, posicionArrayIris]
 		return imagen
 
 	def __RemoverPorcionesNoIrisDeLaImagenRGB(self, imagen, mascaras,
-		posicionArrayIris, posicionArrayPupila, canalColorImagen):
+		posicionArrayIris, canalColorImagen):
 		"""
-			Método que remueve los pixeles con las porciones no iris (ojo, pupila)
+			Método que remueve los pixeles con las porciones no iris (ojo)
 			de la imagen segmentada, para imagenes RGB.
 
 			Args:
@@ -277,8 +296,6 @@ class UtilitarioSegmentacionIris:
 					(segmentaciones) predichas de la imagen de iris.
 				posicionArrayIris (int): Indice de posicionamiento donde
 					está ubicado la segmentación del iris.
-				posicionArrayPupila (int): Indice de posicionamiento donde
-					está ubicado la segmentación de la pupila.
 				canalColorImagen (int): Número del canal de color de
 					la imagen.
 
@@ -286,8 +303,7 @@ class UtilitarioSegmentacionIris:
 				ndarray: Imagen sin porciones no iris.
 		"""
 		for i in range(canalColorImagen):
-			imagen[:, :, i] = imagen[:, :, i] * (
-					mascaras[:, :, posicionArrayIris] - mascaras[:, :, posicionArrayPupila])
+			imagen[:, :, i] = imagen[:, :, i] * mascaras[:, :, posicionArrayIris]
 		return imagen
 
 	def __TransformarImagenATransparente(self, imagen):

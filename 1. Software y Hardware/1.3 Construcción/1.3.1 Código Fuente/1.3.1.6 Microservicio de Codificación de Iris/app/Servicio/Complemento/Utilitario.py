@@ -28,7 +28,37 @@ class Utilitario:
         imagenNumpy = np.fromstring(imagenDecodificada, np.uint8)
         imagenNumpy = cv2.imdecode(imagenNumpy, cv2.IMREAD_COLOR)
         return imagenNumpy
-    
+
+    def BlurImagen(self, imagen):
+        """
+			Método que aplica Blur a una imagen.
+
+			Args:
+				imagen (ndarray): Imagen original de referencia.
+			
+			Returns:
+				(ndarray): Imagen con efecto Blur aplicado.
+		"""
+        return cv2.GaussianBlur(imagen, (7, 7), 0)
+
+    def AutoContraste(self, imagen):
+        """
+            Método que realiza un autocontraste según la imagen de entrada.
+
+            Args:
+                imagen (ndarray): Imagen original de referencia.
+
+            Returns:
+                imagen (ndarray): Imagen con autocontraste aplicado.
+        """
+        if self.__EsImagenIluminada(imagen):
+            contraste = 200
+            imagen = np.int16(imagen)
+            imagen = imagen * (contraste / 127 + 1) - contraste
+            imagen = np.clip(imagen, 0, 255)
+            imagen = np.uint8(imagen)
+        return imagen
+
     def AplicarEqualizacionDeHistograma(self, imagen):
         """
             Método que mejora las características de la imagen de iris mediante
@@ -45,3 +75,15 @@ class Utilitario:
         imagen = cv2.equalizeHist(imagen)
         imagen = cv2.cvtColor(imagen, cv2.COLOR_GRAY2BGR)
         return imagen
+    
+    def __EsImagenIluminada(self, imagen):
+        """
+            Método que verifica si una imagen está iluminada o no.
+
+            Args:
+                imagen (ndarray): 
+
+            Returns:
+                (boolean): True: Imagen con iluminación; False: Imagen con poca iluminación.
+        """
+        return np.mean(imagen) > 80

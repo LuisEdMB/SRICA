@@ -10,7 +10,7 @@ class Utilitario:
         """
             Método inicializador de la clase.
         """
-        self.TAU = 700
+        self.TAU = 8.00
         self.DISTANCIA_NO_CALCULADA = 10000.00
         super().__init__()
 

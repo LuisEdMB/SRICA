@@ -8,7 +8,7 @@ from getmac import get_mac_address
 import subprocess
 from ControlarComponentes import ControlarComponentes
 
-# subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=1000 -c exposure_auto=1", shell = True)
+subprocess.check_call("v4l2-ctl -d /dev/video0 -c exposure_absolute=5000 -c exposure_auto=1 -c sharpness=2 -c contrast=9 -c gain=160", shell = True)
 
 controlarComponentes = ControlarComponentes()
 
@@ -19,7 +19,7 @@ camaraNIR.set(4, 1080)
 SENSOR_DISTANCIA_TRIGGER = 23
 SENSOR_DISTANCIA_ECHO = 24
 
-DISTANCIA_MINIMA_CM = 9
+DISTANCIA_MINIMA_CM = 10
 DISTANCIA_MINIMA_CM_ENCENDER_LUZ = 20
 DISTANCIA_MINIMA_CM_CAPTURA_ROSTRO_ACCESO_DENEGADO = 15
 
@@ -47,7 +47,7 @@ def ProcesarDeteccionDeOjos():
         if (detecciones["ImagenOjo"] != ""):
             imagenOriginal = ""
             if IMAGEN_ORIGINAL is not None:
-                imagenOriginal = ConvertirNumpyArrayABase64(cv2.resize(IMAGEN_ORIGINAL, (640, 480)))
+                imagenOriginal = ConvertirNumpyArrayABase64(IMAGEN_ORIGINAL)
             ProcesarReconocimientoDelPersonal(detecciones["ImagenOjo"], imagenOriginal)
 
 def ProcesarMicroservicioDeDeteccionDeOjos(imagen):
@@ -90,7 +90,7 @@ def ProcesarReconocimientoDelPersonal(ojo, imagenOriginal):
             "ImagenOjo": ojo,
             "DireccionMacEquipoBiometrico": get_mac_address()
         }
-        respuestaReconocimiento = requests.post(url = URL_API_SRICA + "api/iris/reconocimientos",
+        respuestaReconocimiento = requests.post(url = URL_API_SRICA + "api/iris/equipos-biometricos/reconocimientos",
             json = { "Datos": datos }, verify=False)
         ManejarResultadoDelReconocimiento(respuestaReconocimiento)
     except:
@@ -148,10 +148,13 @@ def ManejarResultadoDelReconocimiento(respuestaReconocimiento):
     IMAGEN_OJO_NIR = None
     resultado = json.loads(respuestaReconocimiento.text)
     if resultado["CodigoExcepcion"] == "":
+        nombrePersonal = resultado["Datos"]["PersonalEmpresa"]["NombrePersonalEmpresa"].split(" ")[0]
+        apellidoPersonal = resultado["Datos"]["PersonalEmpresa"]["ApellidoPersonalEmpresa"].split(" ")[0]
         controlarComponentes.ControlarSegunModo(6)
         controlarComponentes.ControlarSegunModo(0)
-        controlarComponentes.ControlarSegunModo(8, "Acceso concedido", False)
-        time.sleep(1)
+        controlarComponentes.ControlarSegunModo(8, "Acceso concedido: " + nombrePersonal + " " + 
+            apellidoPersonal, False)
+        time.sleep(5)
         controlarComponentes.ControlarSegunModo(1)
     else:
         controlarComponentes.ControlarSegunModo(2)
@@ -210,7 +213,7 @@ def EjecutarProceso():
                     controlarComponentes.ControlarSegunModo(8, "/home/pi/beep.mp3", False)
                     controlarComponentes.ControlarSegunModo(5)
                     PROCESO_CAPTURANDO = False
-                tiempoUnSegundo = time.time() + 0.8
+                tiempoUnSegundo = time.time() + 0.6
                 while time.time() < tiempoUnSegundo:
                     success, imagen = camaraNIR.read()
                     if success is True:
