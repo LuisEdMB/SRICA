@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, makeStyles, IconButton } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import PlayCircleFilledWhiteOutlinedIcon from '@material-ui/icons/PlayCircleFilledWhiteOutlined';
 
 const estilos = makeStyles({

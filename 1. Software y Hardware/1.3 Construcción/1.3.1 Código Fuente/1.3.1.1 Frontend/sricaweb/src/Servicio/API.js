@@ -76,7 +76,7 @@ export async function EjecutarPeticionSinToken(peticion, callbackExito, callback
 
 export async function EjecutarPeticion(peticion, callbackExito, callbackError, generarToken = true, 
     tokenTemporal = '', mostrarMensajeErrorAlterno = false){
-    var token = tokenTemporal === '' ? JSON.parse(localStorage.getItem(
+    var token = tokenTemporal === '' ? JSON.parse(sessionStorage.getItem(
         Constante.VARIABLE_LOCAL_STORAGE)).Token : tokenTemporal
     return await axios({
         url: process.env.REACT_APP_API + 'api/' + peticion.URL,
@@ -107,14 +107,14 @@ export async function EjecutarPeticion(peticion, callbackExito, callbackError, g
                 GenerarToken({ 
                     URL: 'token-refresco',
                     Datos: {
-                        Token: JSON.parse(localStorage.getItem(
+                        Token: JSON.parse(sessionStorage.getItem(
                             Constante.VARIABLE_LOCAL_STORAGE)).Token
                     }
                 }, (respuesta) => {
-                    var storage = JSON.parse(localStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
+                    var storage = JSON.parse(sessionStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
                     storage.Token = respuesta
-                    localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
-                    localStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(storage))
+                    sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+                    sessionStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(storage))
                     EjecutarPeticion(peticion, callbackExito, callbackError, generarToken)
                 }, () => null)
             else{
@@ -246,7 +246,7 @@ function ProcesarRespuesta(respuesta, callbackExito, callbackError, mostrarMensa
 }
 
 export function GenerarFinalBitacoraAccionSistema(bitacoraAccionSistema){
-    const usuarioLogueado = JSON.parse(localStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
     if (bitacoraAccionSistema !== undefined){
         bitacoraAccionSistema.CodigoUsuario = usuarioLogueado === null 
             ? ''

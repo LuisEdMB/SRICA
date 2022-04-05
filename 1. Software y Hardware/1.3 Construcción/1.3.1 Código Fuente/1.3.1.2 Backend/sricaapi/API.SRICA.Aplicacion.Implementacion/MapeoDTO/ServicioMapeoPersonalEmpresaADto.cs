@@ -82,7 +82,7 @@ namespace API.SRICA.Aplicacion.Implementacion.MapeoDTO
             return new DtoPersonalEmpresaReconocimiento
             {
                 PersonalEmpresa = MapearADTO(personalEmpresa),
-                EquipoBiometrico = _servicioMapeoEquipoBiometicoADto.MapearADTO(equipoBiometrico)
+                EquipoBiometrico = equipoBiometrico != null ? _servicioMapeoEquipoBiometicoADto.MapearADTO(equipoBiometrico) : null
             };
         }
     }

@@ -60,7 +60,7 @@ export const MenuUsuarioLogueadoEncabezado = () => {
         ServicioSeguridad.CerrarSesion(() => {
             dispatch(GeneralAction.SetDatosUsuarioNoLogueado())
             dispatch(GeneralAction.OcultarEncabezado())
-            localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+            sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
             dispatch(GeneralAction.CerrarBackdrop())
         }, () => true)
     }

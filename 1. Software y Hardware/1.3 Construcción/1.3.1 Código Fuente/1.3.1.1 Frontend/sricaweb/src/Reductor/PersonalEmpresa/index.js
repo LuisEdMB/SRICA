@@ -9,6 +9,7 @@ const valorPorDefectoFormularioPersonalEmpresa = {
     ModalFormulario: false,
     ModalSelectorArea: false,
     ModalCapturadorIris: false,
+    ModalComprobarReconocimientoIris: false,
     CodigoPersonalEmpresa : '0',
     DNIPersonalEmpresa: '',
     NombrePersonalEmpresa: '',
@@ -117,6 +118,14 @@ export const PersonalEmpresaFormularioReducer = (state = valorPorDefectoFormular
         case TipoAccion.CERRAR_FORMULARIO_PERSONAL_EMPRESA_CAPTURADOR_IRIS:
             return {
                 ...state, ModalCapturadorIris: false
+            }
+        case TipoAccion.ABRIR_COMPROBAR_RECONOCIMIENTO_IRIS:
+            return {
+                ...state, ModalComprobarReconocimientoIris: true
+            }
+        case TipoAccion.CERRAR_COMPROBAR_RECONOCIMIENTO_IRIS:
+            return {
+                ...state, ModalComprobarReconocimientoIris: false
             }
         default:
             return state

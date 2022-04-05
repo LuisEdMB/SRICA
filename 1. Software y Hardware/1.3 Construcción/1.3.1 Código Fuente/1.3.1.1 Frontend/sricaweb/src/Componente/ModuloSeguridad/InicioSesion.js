@@ -82,7 +82,7 @@ export const InicioSesion = () => {
         ServicioSeguridad.IniciarSesion(usuario, contrasena, (respuesta) => {
             dispatch(GeneralAction.CerrarBackdrop())
             dispatch(GeneralAction.MostrarEncabezado())
-            localStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(respuesta))
+            sessionStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(respuesta))
             dispatch(GeneralAction.SetDatosUsuarioLogueado(respuesta))
             goHome()
         }, () => dispatch(GeneralAction.CerrarBackdrop()))

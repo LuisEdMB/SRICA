@@ -33,7 +33,7 @@ export const Index = () => {
     const generalUsuarioLogueado = useSelector(store => store.GeneralUsuarioLogueado)
     const dispatch = useDispatch()
     useEffect(() => {
-        var usuario = JSON.parse(localStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
+        var usuario = JSON.parse(sessionStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
         if(usuario === null || usuario.Usuario === ''){
             dispatch(GeneralAction.SetDatosUsuarioNoLogueado())
             dispatch(GeneralAction.OcultarEncabezado())

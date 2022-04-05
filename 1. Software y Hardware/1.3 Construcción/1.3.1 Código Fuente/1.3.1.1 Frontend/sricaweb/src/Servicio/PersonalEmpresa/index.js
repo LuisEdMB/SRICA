@@ -167,6 +167,17 @@ export async function DetectarIrisEnImagen(imagenBase64, callbackExito, callback
     }, callbackExito, callbackError, 'detección de imágenes de iris')
 }
 
+export async function ReconocerPersonalPorElIris(imagenBase64, callbackExito, callbackError){
+    return EjecutarPeticion({
+        URL: 'iris/web/reconocimientos',
+        Metodo: 'POST',
+        Datos: {
+            ImagenOjo: imagenBase64,
+            EsProcesoPorWeb: true
+        }
+    }, callbackExito, callbackError)
+}
+
 function GenerarValorAnteriorOActualParaBitacora(personalEmpresa){
     var valor = {
         DNI: personalEmpresa.DNIPersonalEmpresa,

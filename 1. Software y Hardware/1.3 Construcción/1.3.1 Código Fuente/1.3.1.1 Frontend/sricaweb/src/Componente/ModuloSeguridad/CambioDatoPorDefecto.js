@@ -79,11 +79,11 @@ export const CambioDatoPorDefecto = () => {
             correoElectronico, nuevaContrasena, confirmarNuevaContrasena, 
             !generalUsuarioLogueado.EsCorreoElectronicoPorDefecto, () => {
             dispatch(GeneralAction.CerrarBackdrop())
-            var usuario = JSON.parse(localStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
-            localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+            var usuario = JSON.parse(sessionStorage.getItem(Constante.VARIABLE_LOCAL_STORAGE))
+            sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
             usuario.EsCorreoElectronicoPorDefecto = false
             usuario.EsContrasenaPorDefecto = false
-            localStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(usuario))
+            sessionStorage.setItem(Constante.VARIABLE_LOCAL_STORAGE, JSON.stringify(usuario))
             AlertaSwal.MensajeExitoPorDefecto(() => {
                 dispatch(GeneralAction.SetDatosUsuarioLogueado(usuario))
                 dispatch(GeneralAction.MostrarEncabezado())
@@ -94,7 +94,7 @@ export const CambioDatoPorDefecto = () => {
             if (codigoExcepcion === Constante.CODIGO_EXCEPCION_ADVERTENCIA_SIMPLE_LOGOUT_USUARIO){
                 dispatch(GeneralAction.SetDatosUsuarioNoLogueado())
                 dispatch(GeneralAction.OcultarEncabezado())
-                localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+                sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
             }
         })
     }

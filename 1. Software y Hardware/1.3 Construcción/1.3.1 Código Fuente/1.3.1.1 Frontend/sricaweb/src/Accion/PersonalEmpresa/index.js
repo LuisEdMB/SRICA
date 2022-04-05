@@ -97,3 +97,15 @@ export const CerrarFormularioSelectorArea = () => {
         type: TipoAccion.CERRAR_FORMULARIO_PERSONAL_EMPRESA_SELECTOR_AREA
     }
 }
+
+export const AbrirComprobarReconocimientoIris = () => {
+    return {
+        type: TipoAccion.ABRIR_COMPROBAR_RECONOCIMIENTO_IRIS
+    }
+}
+
+export const CerrarComprobarReconocimientoIris = () => {
+    return {
+        type: TipoAccion.CERRAR_COMPROBAR_RECONOCIMIENTO_IRIS
+    }
+}

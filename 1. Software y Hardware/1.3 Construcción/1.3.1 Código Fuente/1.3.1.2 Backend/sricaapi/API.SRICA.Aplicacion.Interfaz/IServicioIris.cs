@@ -27,10 +27,18 @@ namespace API.SRICA.Aplicacion.Interfaz
         byte[] CodificarIrisEnImagen(string imagenIrisSegmentadoBase64, 
             bool esAccionPorEquipoBiometrico = false);
         /// <summary>
-        /// Método que reconoce a un personal registrado mediante las imágenes de iris
+        /// Método que procesa el iris para reconocer al personal, desde el equipo biométrico
         /// </summary>
-        /// <param name="datos">Objeto encriptado que contiene las imágenes de iris</param>
-        /// <returns>Datos del personal reconocido</returns>
-        DtoPersonalEmpresaReconocimiento ReconocerPersonalPorElIris(JToken datos);
+        /// <param name="encriptado">Objeto encriptado que contiene las imágenes de iris a utilizar
+        /// en el proceso de reconocimiento, y la MAC del equipo biométrico</param>
+        /// <returns>Resultado encriptado con el código del personal reconocido</returns>
+        DtoPersonalEmpresaReconocimiento ReconocerPersonalPorElIrisViaEquipoBiometrico(JToken datos);
+        /// <summary>
+        /// Método que procesa el iris para reconocer al personal (con token), desde la web
+        /// </summary>
+        /// <param name="encriptado">Objeto encriptado que contiene las imágenes de iris a utilizar
+        /// en el proceso de reconocimiento</param>
+        /// <returns>Resultado encriptado con el código del personal reconocido</returns>
+        string ReconocerPersonalPorElIrisViaWeb(JToken datos);
     }
 }

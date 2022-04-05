@@ -31,6 +31,10 @@ namespace API.SRICA.Aplicacion.Implementacion
         /// </summary>
         private readonly IServicioEncriptador _servicioEncriptador;
         /// <summary>
+        /// Servicio para la desencriptación de datos
+        /// </summary>
+        private readonly IServicioDesencriptador _servicioDesencriptador;
+        /// <summary>
         /// Repositorio de consultas a la base de datos
         /// </summary>
         private readonly IRepositorioConsulta _repositorioConsulta;
@@ -63,6 +67,7 @@ namespace API.SRICA.Aplicacion.Implementacion
         /// </summary>
         /// <param name="configuracion">Configuración del proyecto</param>
         /// <param name="servicioEncriptador">Servicio para la encriptación de datos</param>
+        /// <param name="servicioDesencriptador">Servicio para la desencriptación de datos</param>
         /// <param name="repositorioConsulta">Repositorio de consultas a la base de datos</param>
         /// <param name="microservicioSegmentacionIris">Microservicio de segmentación de iris</param>
         /// <param name="microservicioCodificacionIris">Microservicio de codificación de iris</param>
@@ -74,6 +79,7 @@ namespace API.SRICA.Aplicacion.Implementacion
         /// de la empresa</param>
         public ServicioIris(IConfiguration configuracion,
             IServicioEncriptador servicioEncriptador,
+            IServicioDesencriptador servicioDesencriptador,
             IRepositorioConsulta repositorioConsulta,
             IMicroservicioSegmentacionIris microservicioSegmentacionIris,
             IMicroservicioCodificacionIris microservicioCodificacionIris,
@@ -84,6 +90,7 @@ namespace API.SRICA.Aplicacion.Implementacion
         {
             _configuracion = configuracion;
             _servicioEncriptador = servicioEncriptador;
+            _servicioDesencriptador = servicioDesencriptador;
             _repositorioConsulta = repositorioConsulta;
             _microservicioSegmentacionIris = microservicioSegmentacionIris;
             _microservicioCodificacionIris = microservicioCodificacionIris;
@@ -120,11 +127,12 @@ namespace API.SRICA.Aplicacion.Implementacion
                 imagenIrisSegmentadoBase64 ?? string.Empty, esAccionPorEquipoBiometrico);
         }
         /// <summary>
-        /// Método que reconoce a un personal registrado mediante las imágenes de iris
+        /// Método que procesa el iris para reconocer al personal, desde el equipo biométrico
         /// </summary>
-        /// <param name="datos">Objeto encriptado que contiene las imágenes de iris</param>
-        /// <returns>Datos del personal reconocido</returns>
-        public DtoPersonalEmpresaReconocimiento ReconocerPersonalPorElIris(JToken datos)
+        /// <param name="encriptado">Objeto encriptado que contiene las imágenes de iris a utilizar
+        /// en el proceso de reconocimiento, y la MAC del equipo biométrico</param>
+        /// <returns>Resultado encriptado con el código del personal reconocido</returns>
+        public DtoPersonalEmpresaReconocimiento ReconocerPersonalPorElIrisViaEquipoBiometrico(JToken datos)
         {
             EquipoBiometrico equipoBiometrico = null;
             PersonalEmpresa personalEmpresa = null;
@@ -158,6 +166,25 @@ namespace API.SRICA.Aplicacion.Implementacion
                 throw new ExcepcionEquipoBiometricoPersonalizada(excepcion.Message,
                     personalEmpresa, equipoBiometrico, excepcion.InnerException);
             }
+        }
+
+        /// <summary>
+        /// Método que procesa el iris para reconocer al personal (con token), desde la web
+        /// </summary>
+        /// <param name="encriptado">Objeto encriptado que contiene las imágenes de iris a utilizar
+        /// en el proceso de reconocimiento</param>
+        /// <returns>Resultado encriptado con el código del personal reconocido</returns>
+        public string ReconocerPersonalPorElIrisViaWeb(JToken datos)
+        {
+            var personalReconocimiento = _servicioDesencriptador.Desencriptar<DtoPersonalEmpresaReconocimiento>(datos.ToString());
+            var irisSegmentado = SegmentarIrisEnImagen(personalReconocimiento.ImagenOjo, true);
+            var irisCodificado = CodificarIrisEnImagen(irisSegmentado, true);
+            var codigoPersonalReconocido = _microservicioReconocimientoIris.ReconocerIrisDePersonal(
+                _configuracion["MICROSERVICIO_RECONOCIMIENTO_IRIS_URL"],
+                Encoding.UTF8.GetString(irisCodificado));
+            var personalEmpresa = ObtenerPersonalParaReconocimiento(codigoPersonalReconocido);
+            var personalEmpresaDto = _servicioMapeoPersonalEmpresaADto.MapearADTO(personalEmpresa, null);
+            return _servicioEncriptador.Encriptar(personalEmpresaDto);
         }
         #region Métodos privados
         /// <summary>

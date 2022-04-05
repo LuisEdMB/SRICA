@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as GeneralAction from '../../Accion/General'
 import * as PersonalEmpresaAction from '../../Accion/PersonalEmpresa'
 import * as Constante from '../../Constante'
@@ -13,12 +13,14 @@ import * as Utilitario from '../../Utilitario'
 import { BotonModificar } from '../ComponenteGeneral/BotonModificar'
 import { BotonRegistrar } from '../ComponenteGeneral/BotonRegistrar'
 import { BotonRegistrarPersonalMasivo } from '../ComponenteGeneral/BotonRegistrarPersonalMasivo'
+import { BotonComprobarReconocimientoIris } from '../ComponenteGeneral/BotonComprobarReconocimientoIris'
 import { BotonActivar } from '../ComponenteGeneral/BotonActivar'
 import { BotonInactivar } from '../ComponenteGeneral/BotonInactivar'
 import { Tabla } from '../ComponenteGeneral/Tabla'
 import { FormularioEquipoBiometrico } from './FormularioPersonalEmpresa'
+import { CapturaReconocimientoIrisPersonalEmpresa } from './CapturaReconocimientoIrisPersonalEmpresa'
 
-import { makeStyles, Grid, Card, CardContent, Typography, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Checkbox, ListItemText } from '@material-ui/core'
+import { makeStyles, Grid, Card, CardContent, Typography, FormControl, InputLabel, Select, MenuItem, Checkbox, ListItemText } from '@material-ui/core'
 import { DropzoneDialog } from 'material-ui-dropzone'
 
 const estilos = makeStyles({
@@ -57,6 +59,12 @@ const estilos = makeStyles({
         marginTop: 10,
         marginRight: 17
     },
+    botonComprobarReconocimientoIris: {
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 0,
+        marginTop: 10
+    },
     checkboxBorrarDatosBiometricos: {
         color: 'red'
     },
@@ -75,6 +83,7 @@ export const PersonalEmpresa = () => {
     const [listadoPersonalEmpresaEstado, SetListadoPersonalEmpresaEstado] = useState([])
     const [listadoSede, SetListadoSede] = useState([])
     var listadoSedeGrouping = []
+    const personalEmpresaFormulario = useSelector((store) => store.PersonalEmpresaFormulario)
     const dispatch = useDispatch()
 
     const columnasTabla = [
@@ -302,8 +311,11 @@ export const PersonalEmpresa = () => {
                     })
                 }
             })
-        })
-        
+        })   
+    }
+
+    const AbrirModalCapturaReconocimientoIris = () => {
+        dispatch(PersonalEmpresaAction.AbrirComprobarReconocimientoIris())
     }
 
     const AbrirFormularioPersonalEmpresaExistente = (codigoPersonalEmpresa) => {
@@ -398,7 +410,7 @@ export const PersonalEmpresa = () => {
         if (codigoExcepcion === Constante.CODIGO_EXCEPCION_ADVERTENCIA_SIMPLE_LOGOUT_USUARIO){
             dispatch(GeneralAction.SetDatosUsuarioNoLogueado())
             dispatch(GeneralAction.OcultarEncabezado())
-            localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+            sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
         }
     }
 
@@ -441,6 +453,12 @@ export const PersonalEmpresa = () => {
                                 submitButtonText='Registrar'
                                 dialogTitle='Selecciona un archivo (.xls, .xlsx) (100mb máx.):'
                                 onClose={ () => SetSelectorArchivoRegistroMasivoVisible(false) }/>
+                        </div>
+                        <div className={ claseEstilo.botonComprobarReconocimientoIris }>
+                            <BotonComprobarReconocimientoIris
+                                texto='Verificar Reconocimiento'
+                                textoVisible={ true }
+                                onClick={ () => AbrirModalCapturaReconocimientoIris() }/>
                         </div>
                         <Grid
                             item 
@@ -490,6 +508,9 @@ export const PersonalEmpresa = () => {
                 </CardContent>
                 <FormularioEquipoBiometrico
                     RecargarListadoPersonalEmpresa={ ObtenerListadoPersonalEmpresa }/>
+                {
+                    personalEmpresaFormulario.ModalComprobarReconocimientoIris && <CapturaReconocimientoIrisPersonalEmpresa/>   
+                }
             </Card>
         </Grid>
     )

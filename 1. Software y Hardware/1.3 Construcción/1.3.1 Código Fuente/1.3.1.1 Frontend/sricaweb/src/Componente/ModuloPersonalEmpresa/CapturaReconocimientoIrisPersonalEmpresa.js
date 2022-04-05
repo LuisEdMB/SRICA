@@ -1,14 +1,11 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import * as GeneralAction from '../../Accion/General'
 import * as PersonalEmpresaAction from '../../Accion/PersonalEmpresa'
-import * as Constante from '../../Constante'
 
 import * as AlertaSwal from '../ComponenteGeneral/Mensaje'
 
 import * as ServicioPersonalEmpresa from '../../Servicio/PersonalEmpresa'
-import * as ServicioSeguridad from '../../Servicio/Seguridad'
-
-import * as Utilitario from '../../Utilitario'
 
 import { useCamera } from '../../Hooks/useCamera'
 
@@ -17,13 +14,12 @@ import { ContenidoModal } from '../ComponenteGeneral/ContenidoModal'
 import { SeccionAccionModal } from '../ComponenteGeneral/SeccionAccionModal'
 import { BotonIniciarProceso } from '../ComponenteGeneral/BotonIniciarProceso'
 
-import { Dialog, Grid, makeStyles, Typography } from '@material-ui/core'
+import { Dialog, Grid, makeStyles } from '@material-ui/core'
 
 const estilos = makeStyles({
     principal: {
         color: '#48525e',
-        overflow: 'auto',
-        width: 920
+        overflow: 'auto'
     },
     cuadroImagen: {
         display: 'flex',
@@ -37,49 +33,66 @@ const estilos = makeStyles({
         width: 115,
         height: 80,
         margin: '0 auto'
-    },
-    cuadroImagenIris: {
-        height: 200,
-        width: 300
     }
 })
 
-export const CapturaImagenIrisPersonalEmpresa = () => {
+export const CapturaReconocimientoIrisPersonalEmpresa = () => {
     const [ cameraRef, takeImage ] = useCamera()
     const claseEstilo = estilos()
     const personalEmpresaFormulario = useSelector((store) => store.PersonalEmpresaFormulario)
     const dispatch = useDispatch()
 
     const CerrarCapturadorIris = () => {
-        dispatch(PersonalEmpresaAction.CerrarFormularioCapturadorIris())
+        dispatch(PersonalEmpresaAction.CerrarComprobarReconocimientoIris())
     }
 
-    const CapturarImagenesDeIrisDetectados = (imagenBase64) => {
+    const ComprobarReconocimientoIris = (imagenBase64) => {
+        dispatch(GeneralAction.AbrirBackdrop())
         if (imagenBase64) {
             ServicioPersonalEmpresa.DetectarIrisEnImagen(imagenBase64, detecciones => {
-                dispatch(PersonalEmpresaAction.SetFormularioPersonalEmpresaPorCampo("ImagenIris", 
-                    Utilitario.AgregarPrefijoBase64(detecciones.ImagenOjo)))
-                }, error => {
-                    ServicioSeguridad.GuardarBitacoraDeErrorDelSistema(Constante.MODULO_PERSONAL_EMPRESA, 
-                        Constante.RECURSO_PERSONAL_EMPRESA, 
-                        personalEmpresaFormulario.CodigoPersonalEmpresa === '0' 
-                            ? Constante.ACCION_REGISTRO_DATOS
-                            : Constante.ACCION_MODIFICACION_DATOS, error)
+                const imagenOjo = detecciones.ImagenOjo
+                if (imagenOjo) ReconocerPersonalPorElIris(imagenOjo)
+                else {
+                    dispatch(GeneralAction.CerrarBackdrop())
+                    AlertaSwal.MensajeAlerta({
+                        titulo: '¡Advertencia!',
+                        texto: 'No se ha detectado algún iris en la imagen. Intente otra vez.',
+                        icono: 'warning'
+                    })
+                }}, _ => {
+                    dispatch(GeneralAction.CerrarBackdrop())
                     CerrarCapturadorIris()
-            })
+                })
         }
     }
 
-    return(
+    const ReconocerPersonalPorElIris = (imagenIris) => {
+        ServicioPersonalEmpresa.ReconocerPersonalPorElIris(imagenIris, personal => {
+            dispatch(GeneralAction.CerrarBackdrop())
+            const datosPersona = { ...personal?.PersonalEmpresa }
+            if (personal?.PersonalEmpresa?.DNIPersonalEmpresa) AlertaSwal.MensajeExito({
+                texto: `Verificación Exitosa: DNI - ${ datosPersona?.DNIPersonalEmpresa } 
+                    :: Nombres - ${ datosPersona?.NombrePersonalEmpresa } ${ datosPersona?.ApellidoPersonalEmpresa }`,
+                evento: () => { }
+            })
+            else AlertaSwal.MensajeAlerta({
+                titulo: '¡Advertencia!',
+                texto: 'No se ha podido reconocer a la persona. Intente otra vez.',
+                icono: 'warning'
+            })
+        }, () => dispatch(GeneralAction.CerrarBackdrop()))
+    }
+
+    return (
         <Dialog 
             aria-labelledby='capturaImagenIrisPersonalEmpresa' 
-            open={ personalEmpresaFormulario.ModalCapturadorIris }
+            open={ personalEmpresaFormulario.ModalComprobarReconocimientoIris }
             fullWidth={ true }
-            maxWidth={ 'md' }>
+            maxWidth={ 'sm' }>
             <TituloModal 
                 id='capturaImagenIrisPersonalEmpresa' 
                 onClose={ CerrarCapturadorIris }>
-                Captura de Imágenes de Iris
+                Verificación de Iris
             </TituloModal>
             <ContenidoModal dividers className={ claseEstilo.principal }>
                 <Grid 
@@ -87,7 +100,7 @@ export const CapturaImagenIrisPersonalEmpresa = () => {
                     spacing={ 1 } 
                     alignItems="flex-end">
                     <Grid 
-                        item xs={ 8 }>
+                        item xs={ 12 }>
                             <div
                                 className={ claseEstilo.cuadroImagen }>
                                     <div 
@@ -97,28 +110,20 @@ export const CapturaImagenIrisPersonalEmpresa = () => {
                                         style={{ width: 600 }} />
                             </div>
                     </Grid>
-                    <Grid 
-                        item xs={ 4 }>
-                        <Typography>Iris:</Typography>
-                        <img
-                            alt=''
-                            className={ claseEstilo.cuadroImagenIris } 
-                            src={ personalEmpresaFormulario.ImagenIris }/>
-                    </Grid>
                 </Grid>
             </ContenidoModal>
             <SeccionAccionModal>
                 <BotonIniciarProceso 
-                    texto='Iniciar Captura de las Imágenes de Iris'
+                    texto='Iniciar Verificación de Iris'
                     onClick={ () => 
                         takeImage()?.then(base64 => 
                             AlertaSwal.MensajeConfirmacion({
-                                texto: '¿Está seguro de iniciar la captura de las imágenes de iris?',
-                                textoBoton: 'Sí, iniciar',
-                                evento: () => CapturarImagenesDeIrisDetectados(base64)
+                                texto: '¿Está seguro de iniciar con la verificación del iris?',
+                                textoBoton: 'Sí, verificar',
+                                evento: () => ComprobarReconocimientoIris(base64)
                             }))
                     }/>
             </SeccionAccionModal>
-        </Dialog>
+        </Dialog>   
     )
 }

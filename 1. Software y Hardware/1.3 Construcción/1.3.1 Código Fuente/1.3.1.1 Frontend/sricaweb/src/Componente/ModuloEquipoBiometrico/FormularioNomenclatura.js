@@ -91,7 +91,7 @@ export const FormularioNomenclatura = (props) => {
         if (codigoExcepcion === Constante.CODIGO_EXCEPCION_ADVERTENCIA_SIMPLE_LOGOUT_USUARIO){
             dispatch(GeneralAction.SetDatosUsuarioNoLogueado())
             dispatch(GeneralAction.OcultarEncabezado())
-            localStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
+            sessionStorage.removeItem(Constante.VARIABLE_LOCAL_STORAGE)
         }
     }
 
