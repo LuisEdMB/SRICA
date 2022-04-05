@@ -82,8 +82,8 @@ class UtilitarioDeteccionIris:
 			Returns:
 				(ndarray): Imagen con efecto Blur aplicado.
 		"""
-        return cv2.GaussianBlur(imagen, (7, 7), 0)
-
+		return cv2.GaussianBlur(imagen, (7, 7), 0)
+		
 	def __ObtenerSoloOjosDeImagen(self, imagen, cajas):
 		"""
 			Método que recorta la imagen original para obtener solo la porción
