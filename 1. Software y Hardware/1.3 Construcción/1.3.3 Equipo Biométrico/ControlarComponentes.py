@@ -1,3 +1,4 @@
+# coding=utf-8
 import RPi.GPIO as GPIO
 import argparse
 import pyttsx3

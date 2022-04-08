@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
+import Compress from 'compress.js'
+
+const compress = new Compress()
 
 export const useCamera = () => {
     const cameraRef = useRef()
@@ -30,16 +33,11 @@ export const useCamera = () => {
         initCamera()
     }, [])
 
-    const takeImage = useCallback(() => {
-        return imageCapturer.current?.takePhoto(null)?.then(blob => new Promise((resolve, _) => {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                let base64 = reader.result
-                base64 = base64.split(',')[1].trim()
-                resolve(base64)
-            }
-            reader.readAsDataURL(blob)
-        }))
+    const takeImage = useCallback(async () => {
+        const blob = await imageCapturer.current?.takePhoto(null)?.then(blob => blob)
+        const file = new File([blob], "imagen")
+        const imagen = await compress.compress([file], { quality: 0.75 }).then(data => data)
+        return imagen[0]?.data || ""
     }, [])
 
     const EsHoraDeLaManana = () => {
