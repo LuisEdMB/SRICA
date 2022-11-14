@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ArpLookup" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Renci.SshNet.New" Version="2020.0.0-beta-20200203-1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API.SRICA.Dominio.Entidad\API.SRICA.Dominio.Entidad.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Excepcion\API.SRICA.Dominio.Excepcion.csproj" />
+    <ProjectReference Include="..\API.SRICA.Dominio.Servicio.Interfaz\API.SRICA.Dominio.Servicio.Interfaz.csproj" />
+  </ItemGroup>
+
+</Project>

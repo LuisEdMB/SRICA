@@ -1,0 +1,102 @@
+version: '3.4'
+
+services:
+    srica-cliente-web:
+        container_name: srica-cliente-web
+        environment:
+            - REACT_APP_API=https://192.168.0.30:8001/
+            - REACT_APP_MICROSERVICIO_DETECCION_IRIS_URL=https://192.168.0.30:8003/
+            - REACT_APP_CLAVESECRETA=V@7S6fAl-rkVDxh_HyJZL-oJB.i@jSOx
+            - REACT_APP_VECTORIV=m2PCs0Ju9m1u3AIPkO3RUQ==
+            - REACT_APP_AUDIENCIAPERMITIDA=qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu
+        depends_on:
+            - srica-api
+            - srica-microservicio-deteccion
+        ports:
+            - "8000:443"
+        volumes:
+            - .certs:/certs
+
+    srica-api:
+        container_name: srica-api
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Release
+            - ASPNETCORE_URLS=https://+;http://+
+            - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/srica.pfx
+            - ASPNETCORE_Kestrel__Certificates__Default__Password=123.-SRICa
+            - SEGURIDAD_CLAVE_SECRETA=V@7S6fAl-rkVDxh_HyJZL-oJB.i@jSOx
+            - SEGURIDAD_IV=m2PCs0Ju9m1u3AIPkO3RUQ==
+            - SEGURIDAD_ISSUER=srica
+            - SEGURIDAD_AUDIENCIA_PERMITIDA=qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu
+            - BASE_DATOS_SERVIDOR=192.168.0.16
+            - BASE_DATOS_CATALOGO=SRICA
+            - BASE_DATOS_USUARIO=root
+            - BASE_DATOS_CLAVE=root
+            - BASE_DATOS_PUERTO=3306
+            - EQUIPO_BIOMETRICO_IP=192.168.0.0
+            - EQUIPO_BIOMETRICO_MASCARA_SUBRED=255.255.255.0
+            - EQUIPO_BIOMETRICO_DOMINIO=
+            - EQUIPO_BIOMETRICO_USUARIO_SSH=pi
+            - EQUIPO_BIOMETRICO_CLAVE_SSH=raspberry
+            - EQUIPO_BIOMETRICO_VARIABLE_ENTORNO_API=APP_API
+            - CLIENTE_SRICA_URL=https://192.168.0.30:8000/
+            - MICROSERVICIO_CORREO_URL=https://srica-microservicio-correo
+            - MICROSERVICIO_SEGMENTACION_IRIS_URL=https://srica-microservicio-segmentacion
+            - MICROSERVICIO_CODIFICACION_IRIS_URL=https://srica-microservicio-codificacion
+            - MICROSERVICIO_RECONOCIMIENTO_IRIS_URL=https://srica-microservicio-reconocimiento
+        depends_on:
+            - srica-microservicio-correo
+            - srica-microservicio-segmentacion
+            - srica-microservicio-codificacion
+            - srica-microservicio-reconocimiento
+        ports:
+            - "8001:443"
+        volumes:
+            - .certs:/certs
+
+    srica-microservicio-correo:
+        container_name: srica-microservicio-correo
+        environment:
+            - SERVIDOR_CORREO=173.194.217.108
+            - PUERTO_CORREO=587
+            - USUARIO_CORREO=sricaemail@gmail.com
+            - CONTRASENA_CORREO=123.-SRICa
+            - CORREO_EMISOR=sricaemail@gmail.com
+        ports:
+            - "8002:443"
+        volumes:
+            - .certs:/certs
+
+    srica-microservicio-deteccion:
+        container_name: srica-microservicio-deteccion
+        ports:
+            - "8003:443"
+        volumes:
+            - .certs:/certs
+
+    srica-microservicio-segmentacion:
+        container_name: srica-microservicio-segmentacion
+        ports:
+            - "8004:443"
+        volumes:
+            - .certs:/certs
+
+    srica-microservicio-codificacion:
+        container_name: srica-microservicio-codificacion
+        ports:
+            - "8005:443"
+        volumes:
+            - .certs:/certs
+
+    srica-microservicio-reconocimiento:
+        container_name: srica-microservicio-reconocimiento
+        environment:
+            - SERVIDOR_BASE_DATOS=192.168.0.16
+            - PUERTO_BASE_DATOS=3306
+            - BASE_DATOS=SRICA
+            - USUARIO_BASE_DATOS=root
+            - CONTRASENA_BASE_DATOS=root
+        ports:
+            - "8006:443"
+        volumes:
+            - .certs:/certs

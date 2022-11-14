@@ -1,0 +1,13 @@
+[Unit]
+Description=Servicio de camara en el equipo.
+After=network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/ServicioCamara.py
+StandardInput=tty-force
+Restart=always
+
+[Install]
+WantedBy=default.target

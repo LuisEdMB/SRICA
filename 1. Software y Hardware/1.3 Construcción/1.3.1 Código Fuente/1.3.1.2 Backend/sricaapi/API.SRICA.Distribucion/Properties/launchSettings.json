@@ -1,0 +1,33 @@
+﻿{
+  "profiles": {
+    "API.SRICA.Distribucion": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://*:5001;http://*:5000",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SEGURIDAD_CLAVE_SECRETA": "V@7S6fAl-rkVDxh_HyJZL-oJB.i@jSOx",
+        "SEGURIDAD_IV": "m2PCs0Ju9m1u3AIPkO3RUQ==",
+        "SEGURIDAD_ISSUER": "srica",
+        "SEGURIDAD_AUDIENCIA_PERMITIDA": "qVc_R7u7u@IB-dFaV@a6rgc-s4_aC7Fu",
+        "BASE_DATOS_SERVIDOR": "localhost",
+        "BASE_DATOS_CATALOGO": "srica",
+        "BASE_DATOS_USUARIO": "root",
+        "BASE_DATOS_CLAVE": "root",
+        "BASE_DATOS_PUERTO": "3306",
+        "EQUIPO_BIOMETRICO_IP": "192.168.0.0",
+        "EQUIPO_BIOMETRICO_MASCARA_SUBRED": "255.255.255.0",
+        "EQUIPO_BIOMETRICO_DOMINIO": "",
+        "EQUIPO_BIOMETRICO_USUARIO_SSH": "pi",
+        "EQUIPO_BIOMETRICO_CLAVE_SSH": "raspberry",
+        "CLIENTE_SRICA_URL": "https://192.168.0.30:8000/", 
+        "MICROSERVICIO_CORREO_URL": "https://192.168.0.30:8002",
+        "MICROSERVICIO_SEGMENTACION_IRIS_URL": "https://192.168.0.30:8004",
+        "MICROSERVICIO_CODIFICACION_IRIS_URL": "https://192.168.0.30:8005",
+        "MICROSERVICIO_RECONOCIMIENTO_IRIS_URL": "https://192.168.0.30:8006"
+      }
+    }
+  }
+}

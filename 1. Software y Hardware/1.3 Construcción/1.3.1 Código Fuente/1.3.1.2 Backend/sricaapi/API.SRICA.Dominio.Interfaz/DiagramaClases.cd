@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="API.SRICA.Dominio.Interfaz.IRepositorioConsulta">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAACAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRepositorioConsulta.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Interfaz.IRepositorioOperacion">
+    <Position X="4.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAEA=</HashCode>
+      <FileName>IRepositorioOperacion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

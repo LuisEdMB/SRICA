@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.AR.AreaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\AR\AreaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.BT.BitacoraAccionEquipoBiometricoConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\BT\BitacoraAccionEquipoBiometricoConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.BT.BitacoraAccionSistemaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\BT\BitacoraAccionSistemaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.EB.EquipoBiometricoConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\EB\EquipoBiometricoConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.EB.NomenclaturaEquipoBiometricoConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\EB\NomenclaturaEquipoBiometricoConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.PE.PersonalEmpresaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\PE\PersonalEmpresaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.PE.PersonalEmpresaXAreaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\PE\PersonalEmpresaXAreaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SE.SedeConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SE\SedeConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SI.AccionSistemaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SI\AccionSistemaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SI.ModuloSistemaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SI\ModuloSistemaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SI.RecursoSistemaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SI\RecursoSistemaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SI.ResultadoAccesoConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="15" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SI\ResultadoAccesoConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.SI.TipoEventoSistemaConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="6" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\SI\TipoEventoSistemaConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.US.RolUsuarioConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\US\RolUsuarioConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.MapeoEntidad.US.UsuarioConfiguracion" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoEntidad\US\UsuarioConfiguracion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.Repositorio.RepositorioConsulta" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAACAAAAAAAAgIAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Repositorio\RepositorioConsulta.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.Repositorio.RepositorioOperacion" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAAAAAQAAAAAAAIAAAAAAAEA=</HashCode>
+      <FileName>Repositorio\RepositorioOperacion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.Contexto.ContextoConsulta">
+    <Position X="13" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexto\ContextoConsulta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Infraestructura.Configuracion.Contexto.ContextoOperacion">
+    <Position X="0.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexto\ContextoOperacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

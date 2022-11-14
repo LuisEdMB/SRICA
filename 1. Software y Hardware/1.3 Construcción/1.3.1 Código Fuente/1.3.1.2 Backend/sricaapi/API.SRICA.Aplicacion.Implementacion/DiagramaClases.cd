@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioAccionSistema" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAEAAAAAAgAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServicioAccionSistema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioAlerta" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>oAEAAAQQgAAAAAAAAAgAAABCAEIACAgAAAgAAgAAAAg=</HashCode>
+      <FileName>ServicioAlerta.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioArchivo" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="15.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ServicioArchivo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioArea" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>JREQACAAgCAAAAgACAgAAEAAAAAAABCBAQsAACAAAAA=</HashCode>
+      <FileName>ServicioArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioAutenticacion" BaseTypeListCollapsed="true">
+    <Position X="12" Y="6.25" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAAQAAAAAAAAAAgAAIAAAEAAAAAAAAgAAhAAAAA=</HashCode>
+      <FileName>ServicioAutenticacion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioBitacoraAccionEquipoBiometrico" BaseTypeListCollapsed="true">
+    <Position X="29.25" Y="6.25" Width="6.75" />
+    <TypeIdentifier>
+      <HashCode>oBEAAAAAAAAAAAAgAAgAAQAAAAAACAAAAAAIgAAAAAA=</HashCode>
+      <FileName>ServicioBitacoraAccionEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioBitacoraAccionSistema" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>qBEAAgAAAAAAAAAAAAgAAAACCAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ServicioBitacoraAccionSistema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioDesencriptador" BaseTypeListCollapsed="true">
+    <Position X="12" Y="12.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ServicioDesencriptador.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioDireccionRed" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAABAAAAAAAAAAAAAEAAAAQAAAAAQAgAgAAAAAA=</HashCode>
+      <FileName>ServicioDireccionRed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioEncriptador" BaseTypeListCollapsed="true">
+    <Position X="12" Y="10" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ServicioEncriptador.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioEquipoBiometrico" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="7.25" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>YFEEAAAAQAKAgAAAAAsEAUgAAEoAAAAAAAgAACAGAAA=</HashCode>
+      <FileName>ServicioEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioIris" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="6.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>ACEBAAAAAACAAAgAAAgAAAAAAAAAAAQAAAgAQAYQEQA=</HashCode>
+      <FileName>ServicioIris.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioModuloSistema" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="13" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAgAAABAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ServicioModuloSistema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioNomenclaturaEquipoBiometrico" BaseTypeListCollapsed="true">
+    <Position X="34.5" Y="0.5" Width="6.75" />
+    <TypeIdentifier>
+      <HashCode>oBEIAAAAABACAgAAAAgAAQCAAIAAAIAAKAAgAAAAACA=</HashCode>
+      <FileName>ServicioNomenclaturaEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioPersonalEmpresa" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="0.5" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>pBEAgIIBAABAAChAAQgIAAAAAAkAgACAAgABAAAAABA=</HashCode>
+      <FileName>ServicioPersonalEmpresa.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioRecursoSistema" BaseTypeListCollapsed="true">
+    <Position X="42" Y="5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAgAAABAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>ServicioRecursoSistema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioResultadoAcceso" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="4.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAgAAABAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ServicioResultadoAcceso.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioRolUsuario" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="13.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>ServicioRolUsuario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioSede" BaseTypeListCollapsed="true">
+    <Position X="29.25" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>YFEAAAAABAICAAgAAAgAIBAIAZAAEAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ServicioSede.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioTipoEventoSistema" BaseTypeListCollapsed="true">
+    <Position X="11" Y="15" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAgAAABEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServicioTipoEventoSistema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.ServicioUsuario" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>oBMACgAQIAAAAAAAABgACAADAAAAQUAAAAACAAAIAAE=</HashCode>
+      <FileName>ServicioUsuario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoAreaADto" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="11" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoAreaADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoBitacoraAccionEquipoBiometricoADto" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="13.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoBitacoraAccionEquipoBiometricoADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoBitacoraAccionSistemaADto" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="9.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoBitacoraAccionSistemaADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoEquipoBiometicoADto" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoEquipoBiometicoADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoNomenclaturaEquipoBiometricoADto" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="13.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoNomenclaturaEquipoBiometricoADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoPersonalEmpresaADto" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="14.75" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoPersonalEmpresaADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoPersonalEmpresaXAreaADto" BaseTypeListCollapsed="true">
+    <Position X="42" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoPersonalEmpresaXAreaADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoRolUsuarioADto" BaseTypeListCollapsed="true">
+    <Position X="42" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoRolUsuarioADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoSedeADto" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoSedeADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoSistemaADto" BaseTypeListCollapsed="true">
+    <Position X="24.75" Y="12" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoSistemaADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoUsuarioADto" BaseTypeListCollapsed="true">
+    <Position X="29.25" Y="10.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoUsuarioADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.MapeoDTO.ServicioMapeoUsuarioAutenticadoADto" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="8" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\ServicioMapeoUsuarioAutenticadoADto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.Implementacion.Hubs.EquipoBiometricoHub">
+    <Position X="24.25" Y="7.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Hubs\EquipoBiometricoHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+opencv-python
+opencv-contrib-python
+torch==1.8
+torchvision==0.9
+cython
+pyyaml
+scipy
+Pillow
+scikit-image

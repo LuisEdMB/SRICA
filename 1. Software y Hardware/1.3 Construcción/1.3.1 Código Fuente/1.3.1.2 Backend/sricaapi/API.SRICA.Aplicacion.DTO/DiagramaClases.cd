@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoArea">
+    <Position X="0.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAIAAAAAAAAkEAABAACAAAEAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>DtoArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoBitacoraAccionEquipoBiometrico">
+    <Position X="4.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>DABAAAYAABAAAAAAAAAAABCgAAAIACACAEAQgACAAAA=</HashCode>
+      <FileName>DtoBitacoraAccionEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoBitacoraAccionSistema">
+    <Position X="7.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAEAAAAAQAAAAAABCAAEjACAAAECAAACIAASAIAABg=</HashCode>
+      <FileName>DtoBitacoraAccionSistema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoEquipoBiometrico">
+    <Position X="10.75" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>CABAAAIAAAAEAAAhEAAABACAIAAEAAAAAAAAgAAYAAA=</HashCode>
+      <FileName>DtoEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoNomenclaturaEquipoBiometrico">
+    <Position X="0.75" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DtoNomenclaturaEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoPersonalEmpresa">
+    <Position X="10.75" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAABgAACAAGAABAAQAACIAEA=</HashCode>
+      <FileName>DtoPersonalEmpresa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoPersonalEmpresaReconocimiento">
+    <Position X="0.75" Y="8" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAgAAAAAAAAAAEIAAAAAAgAA=</HashCode>
+      <FileName>DtoPersonalEmpresaReconocimiento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoPersonalEmpresaXArea">
+    <Position X="4.5" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABAAAIAAAABAAAgAAAAAACgAAEAAAAAAIAAgQAIAAA=</HashCode>
+      <FileName>DtoPersonalEmpresaXArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoRolUsuario">
+    <Position X="4.5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DtoRolUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoSede">
+    <Position X="0.75" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAEAAAAAAAAAACAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>DtoSede.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoSistema">
+    <Position X="10.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DtoSistema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.SRICA.Aplicacion.DTO.DtoUsuario">
+    <Position X="7.75" Y="5.5" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="API.SRICA.Aplicacion.DTO.DtoUsuario.EnumTipoOperacion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DtoUsuario.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABAIEAABAwgAABBAASAAAIBAEIAAJAAA=</HashCode>
+      <FileName>DtoUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

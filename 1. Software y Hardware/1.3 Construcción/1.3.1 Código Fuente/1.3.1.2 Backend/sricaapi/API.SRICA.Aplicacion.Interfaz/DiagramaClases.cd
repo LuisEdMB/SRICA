@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioAccionSistema">
+    <Position X="0.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioAccionSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioAlerta">
+    <Position X="4.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioAlerta.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioArchivo">
+    <Position X="9" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>IServicioArchivo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioArea">
+    <Position X="8.25" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAAAAAAAAAAAAAAAAAAAAAAAQkAACAAAAA=</HashCode>
+      <FileName>IServicioArea.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioAutenticacion">
+    <Position X="13.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAAAA=</HashCode>
+      <FileName>IServicioAutenticacion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioBitacoraAccionEquipoBiometrico">
+    <Position X="0.75" Y="3.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>IServicioBitacoraAccionEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioBitacoraAccionSistema">
+    <Position X="7" Y="2" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>IServicioBitacoraAccionSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioDesencriptador">
+    <Position X="4.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioDesencriptador.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioDireccionRed">
+    <Position X="11.5" Y="2" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>IServicioDireccionRed.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioEncriptador">
+    <Position X="8.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>IServicioEncriptador.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioEquipoBiometrico">
+    <Position X="10.5" Y="6.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>QEAEAAAAAAIAgAAAAAMAAAAAAAAAAAAAAAAAAAAGAAA=</HashCode>
+      <FileName>IServicioEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioIris">
+    <Position X="0.75" Y="7.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQQAAA=</HashCode>
+      <FileName>IServicioIris.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioModuloSistema">
+    <Position X="11" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>IServicioModuloSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioNomenclaturaEquipoBiometrico">
+    <Position X="15.5" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAgAAAAAAAQCAAIAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IServicioNomenclaturaEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioPersonalEmpresa">
+    <Position X="15" Y="4.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAABAAQAIAAAAAAgAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>IServicioPersonalEmpresa.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioRecursoSistema">
+    <Position X="4.75" Y="9.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioRecursoSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioResultadoAcceso">
+    <Position X="4" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioResultadoAcceso.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioRolUsuario">
+    <Position X="4" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>IServicioRolUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioSede">
+    <Position X="7.75" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAABAAAZAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioSede.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioTipoEventoSistema">
+    <Position X="11" Y="5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioTipoEventoSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.IServicioUsuario">
+    <Position X="0.75" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAAAAAABAACAABAAAAQAAAAAAAAAAIAAA=</HashCode>
+      <FileName>IServicioUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoAreaADto">
+    <Position X="5.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoAreaADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoBitacoraAccionEquipoBiometricoADto">
+    <Position X="19" Y="4.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoBitacoraAccionEquipoBiometricoADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoBitacoraAccionSistemaADto">
+    <Position X="19" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoBitacoraAccionSistemaADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoEquipoBiometicoADto">
+    <Position X="19" Y="7.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoEquipoBiometicoADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoNomenclaturaEquipoBiometricoADto">
+    <Position X="0.75" Y="9.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoNomenclaturaEquipoBiometricoADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoPersonalEmpresaADto">
+    <Position X="19" Y="6.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoPersonalEmpresaADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoPersonalEmpresaXAreaADto">
+    <Position X="16.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoPersonalEmpresaXAreaADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoRolUsuarioADto">
+    <Position X="22.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoRolUsuarioADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoSedeADto">
+    <Position X="15" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoSedeADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoSistemaADto">
+    <Position X="20" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoSistemaADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoUsuarioADto">
+    <Position X="5.5" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoUsuarioADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.MapeoDTO.IServicioMapeoUsuarioAutenticadoADto">
+    <Position X="0.75" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapeoDTO\IServicioMapeoUsuarioAutenticadoADto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Aplicacion.Interfaz.Hubs.IEquipoBiometricoHub">
+    <Position X="19" Y="2" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hubs\IEquipoBiometricoHub.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

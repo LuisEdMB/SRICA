@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioCryptoAES">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>IServicioCryptoAES.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioArea">
+    <Position X="17" Y="3.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACgAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>IServicioDominioArea.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioBitacoraAccionEquipoBiometrico">
+    <Position X="2.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>IServicioDominioBitacoraAccionEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioBitacoraAccionSistema">
+    <Position X="6.25" Y="0.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAUAAAAAAAAAAAAEA=</HashCode>
+      <FileName>IServicioDominioBitacoraAccionSistema.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioEquipoBiometrico">
+    <Position X="12.25" Y="3" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAMAAACAAEAAAAAEEAAAAACEAAA=</HashCode>
+      <FileName>IServicioDominioEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioNomenclaturaEquipoBiometrico">
+    <Position X="11.75" Y="0.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAAAAAAAAAAAgAAIAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>IServicioDominioNomenclaturaEquipoBiometrico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioPersonalEmpresa">
+    <Position X="7.5" Y="3" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAABAAACKAAAAAAEAAAAAAAAAABAAAIgAA=</HashCode>
+      <FileName>IServicioDominioPersonalEmpresa.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioSede">
+    <Position X="2.75" Y="3.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAgAAAAAQBAAAAAAAQAAAAAgAgAAAAA=</HashCode>
+      <FileName>IServicioDominioSede.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioDominioUsuario">
+    <Position X="17" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAgAAAAAAAAAAAAAAAAAAKBAIAAACAAAAgIBAA=</HashCode>
+      <FileName>IServicioDominioUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioPingHost">
+    <Position X="0.5" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IServicioPingHost.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="API.SRICA.Dominio.Servicio.Interfaz.IServicioToken">
+    <Position X="0.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>IServicioToken.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
